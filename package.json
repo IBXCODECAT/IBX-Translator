@@ -1,0 +1,24 @@
+{
+  "name": "prototype-7-bot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "engines": {
+    "node": "8.x",
+    "npm": "*"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "discord.js": "^14.11.0",
+    "dotenv": "^16.3.1",
+    "google-translate-api": "^2.3.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.43.0"
+  }
+}
