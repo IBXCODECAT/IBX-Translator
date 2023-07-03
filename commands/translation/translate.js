@@ -22,13 +22,13 @@ module.exports = {
 		})
 		.addStringOption(option => 
 			option.setName('text-content')
-				.setNameLocalizations({
+				/*.setNameLocalizations({
 					"en-GB": 'text-content',
 					"en-US": 'text-content',
 					de: 'Textinhalt',
 					ru: 'текстовое-содержание',
 					"es-ES": 'contenido-del-texto'
-				})
+				})*/
 				.setDescription('Specify the content I should translate.')
 				.setDescriptionLocalizations({
 					"en-GB": 'Specify the content I should translate.',
@@ -40,13 +40,13 @@ module.exports = {
 				.setRequired(true))
 		.addStringOption(option =>
 			option.setName('language')
-				.setNameLocalizations({
+				/*.setNameLocalizations({
 					"en-GB": 'language',
 					'en-US': 'language',
 					de: 'Sprache',
 					ru: 'язык',
 					"es-ES": 'idioma'
-				})
+				})*/
 				.setDescription('Specify the language I should translate the content to.')
 				.setDescriptionLocalizations({
 					"en-GB": 'Specify the language I should translate the content to.',
@@ -79,8 +79,7 @@ module.exports = {
 					de: 'Geben Sie an, ob diese Nachricht in diesem Kanal gesendet werden soll',
 					ru: 'Укажите, должно ли это сообщение быть отправлено в этом канале',
 					"es-ES": 'Especificar si este mensaje debe ser enviado en este canal'
-				})
-				.setRequired(true),
+				}),
 
 	async execute(interaction) {
 
