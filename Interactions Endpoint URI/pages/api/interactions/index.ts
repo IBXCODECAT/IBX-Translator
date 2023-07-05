@@ -2,6 +2,7 @@ import { NextApiRequest, NextApiResponse } from "next"
 import { APIApplicationCommandInteraction, APIChatInputApplicationCommandInteraction, APIInteractionResponse, MessageFlags } from "discord-api-types/v10"
 import withDiscordInteraction from "./../../../middlewares/discord-interaction"
 import withErrorHandler from "./../../../middlewares/error-handler"
+import { TranslateTextWithDiscordCommandOptions } from "../../../services/translations";
 
 const BASE_RESPONSE = { type: 4 }
 const INVALID_COMMAND_RESPONSE = { ...BASE_RESPONSE, data: { content: "You have executed a command that does not exist in my directory. Try again later or run **/bot-support** to contact the developers." } }
@@ -29,11 +30,38 @@ const handler = async (
     case "bot-support":
       return res.status(200).json(BOT_SUPPORT_RESPONSE)
     case "help":
+<<<<<<< Updated upstream
       return res.status(200).json(BOT_SUPPORT_RESPONSE);
     case "ping":
       return res.status(200).json(PING_COMMAND_RESPONSE)
     case "privacy":
       return res.status(200).json(PRIVACY_RESPONSE);
+=======
+      return res.status(200).json(COMMAND_SUPPORT_RESPONSE);
+    case "translate":
+
+      const deferResponse = {
+        ...INTERACTION_ACK,
+        data:
+        {
+          ...COMMAND_RESPONSE_DATA
+        }
+      }
+
+      res.status(200).json(deferResponse);
+
+      const translationResult = await TranslateTextWithDiscordCommandOptions(options!);
+
+      const response = { 
+        ...INTERACTION_RESPOND_LATE, 
+        data: 
+        {
+          content: translationResult
+        } 
+      }
+
+      return res.status(200).json(response);
+>>>>>>> Stashed changes
     default:
       return res.status(200).json(INVALID_COMMAND_RESPONSE)
   }
