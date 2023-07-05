@@ -41,15 +41,11 @@ const handler = async (
     case "help":
       return res.status(200).json(COMMAND_SUPPORT_RESPONSE);
     case "translate":
-
-      res.status(200).json(ACK_INTERACTION);
-
       const translation: IBXTranslationObject = await TranslateContent(options!)
 
-      const response = { ...INTERACTION_RESPOND_LATE, data: { content: translation.translation }}
+      const response = { ...INTERACTION_RESPOND_INSTANTLY, data: { ...COMMAND_RESPONSE_DATA, content: translation.translation }}
 
       return res.status(200).json(response);
-
     default:
       return res.status(404).json(INVALID_COMMAND_RESPONSE)
   }
