@@ -41,11 +41,20 @@ const handler = async (
     case "help":
       return res.status(200).json(COMMAND_SUPPORT_RESPONSE);
     case "translate":
-      const translation: IBXTranslationObject = await TranslateContent(options!)
 
-      const response = { ...INTERACTION_RESPOND_INSTANTLY, data: { ...COMMAND_RESPONSE_DATA, content: translation.translation }}
+      try
+      {  
+        const translation: IBXTranslationObject = await TranslateContent(options!)
 
-      return res.status(200).json(response);
+        const response = { ...INTERACTION_RESPOND_INSTANTLY, data: { ...COMMAND_RESPONSE_DATA, content: translation.translation }}
+
+        return res.status(200).json(response);
+      }
+      catch(err)
+      {
+        console.log(err);
+        console.error(err);
+      }
     default:
       return res.status(404).json(INVALID_COMMAND_RESPONSE)
   }
