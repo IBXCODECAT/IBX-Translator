@@ -6,7 +6,8 @@
     "dev": "next dev --turbo",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "test": "./ngrok http 3000"
   },
   "dependencies": {
     "@types/node": "20.3.3",
