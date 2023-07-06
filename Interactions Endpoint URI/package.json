@@ -6,7 +6,8 @@
     "dev": "next dev --turbo",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "test": "./ngrok http 3000"
   },
   "dependencies": {
     "@types/google-translate-api": "^2.3.2",
