@@ -64,7 +64,7 @@ const handler = async (
             const response_preview = { ...INTERACTION_RESPOND_INSTANTLY, data: { ...COMMAND_RESPONSE_DATA, content: `Here is a translation:\n\n\`${ans_preview}\`.\n\nA message will not be sent!` }}
             return res.status(200).json(response_preview);
           default:
-            return res.status(400);
+            return res.status(404).json(INVALID_COMMAND_RESPONSE);
         }
       }
       catch(err)
