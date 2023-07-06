@@ -39,6 +39,7 @@ const handler = async (
 =======
       return res.status(200).json(COMMAND_SUPPORT_RESPONSE);
     case "translate":
+<<<<<<< Updated upstream
 
       const deferResponse = {
         ...INTERACTION_ACK,
@@ -58,6 +59,36 @@ const handler = async (
         {
           content: translationResult
         } 
+=======
+      try
+      {
+        switch(options![0].name)
+        {
+          case 'help':
+            const response_help = { ...INTERACTION_RESPOND_INSTANTLY, data: { ...COMMAND_RESPONSE_DATA, content: 'Help MSG' } }
+            return res.status(200).json(response_help);
+          case 'message':
+            const translation_msg: IBXTranslationObject = await TranslateContent(options!)
+            const response_msg = { ...INTERACTION_RESPOND_INSTANTLY, data: { ...COMMAND_RESPONSE_DATA, content: '**Here is your translation preview:** ' + translation_msg.translation }}
+
+            //SEND A MESSAGE IN THE EXECUTION CHANNEL HERE!!!
+
+            res.status(200).json(response_msg);
+            break;
+          case 'preview':
+            const translation_preview: IBXTranslationObject = await TranslateContent(options!)
+            const response_preview = { ...INTERACTION_RESPOND_INSTANTLY, data: { ...COMMAND_RESPONSE_DATA, content: '**Here is your translation preview:** ' + translation_preview.translation }}
+            return res.status(200).json(response_preview);
+        }
+      }
+      catch(err)
+      {
+        console.log(err);
+        console.error(err);
+
+        const response = { ...INTERACTION_RESPOND_INSTANTLY, data: { ...COMMAND_RESPONSE_DATA, content: 'There was a problem processing your request\n\n' + err}}
+        res.status(200).json(response);
+>>>>>>> Stashed changes
       }
 
       return res.status(200).json(response);
