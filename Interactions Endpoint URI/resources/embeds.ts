@@ -4,7 +4,7 @@ export const HELP_EMBED =
       "type": "rich",
       "title": `IBX Help Page`,
       "description": `The following are some commands you may find useful. IBX commands are divided into three different categories:`,
-      "color": 0x00FFFF,
+      "color": 0xA632FA,
       "fields": [
         {
           "name": `🌐 Communications`,
