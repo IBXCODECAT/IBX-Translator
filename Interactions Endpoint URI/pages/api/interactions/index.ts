@@ -4,6 +4,7 @@ import withDiscordInteraction from "./../../../middlewares/discord-interaction"
 import withErrorHandler from "./../../../middlewares/error-handler"
 import { TranslateContent } from "../../../services/translate";
 import { IBXTranslationObject as IBXTranslationObject } from "../../../interfaces/transObj";
+import { HELP_EMBED } from "../../../resources/embeds";
 
 const INTERACTION_ACK_PING = { type: InteractionResponseType.Pong as number };
 const INTERACTION_RESPOND_INSTANTLY = { type: InteractionResponseType.ChannelMessageWithSource as number }
@@ -19,6 +20,7 @@ const INVALID_COMMAND_RESPONSE = { ...INTERACTION_RESPOND_INSTANTLY, data: { ...
 
 const COMMAND_SUPPORT_RESPONSE = { ...INTERACTION_RESPOND_INSTANTLY, data: { ...COMMAND_RESPONSE_DATA, content: "https://discord.gg/Zy5uXQUZXx" }}
 
+const COMMAND_HELP_RESPONSE = { ...INTERACTION_RESPOND_INSTANTLY, data: { ...COMMAND_RESPONSE_DATA, embeds: HELP_EMBED }}
 
 // disable body parsing, need the raw body as per https://discord.com/developers/docs/interactions/slash-commands#security-and-authorization
 export const config = {
@@ -39,7 +41,7 @@ const handler = async (
     case "support":
       return res.status(200).json(COMMAND_SUPPORT_RESPONSE)
     case "help":
-      return res.status(200).json(COMMAND_SUPPORT_RESPONSE);
+      return res.status(200).json(COMMAND_HELP_RESPONSE);
     case "translate":
       try
       {
