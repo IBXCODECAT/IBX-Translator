@@ -56,7 +56,7 @@ const handler = async (
             return res.status(200).json(response_help);
           
           case 'message':
-            await DeferSlashCommandResponse(interaction, MessageFlags.Ephemeral);
+            await DeferSlashCommandResponse(interaction, MessageFlags.SuppressEmbeds);
             const translation_msg: IBXTranslationObject = await TranslateContent(options!);
             await EditSlashCommandResponse(interaction, `**<@${interaction.member?.user.id}> says:** \`${translation_msg.translation}\``);
             return res.status(200).json(ACK_INTERACTION);
