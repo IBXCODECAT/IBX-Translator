@@ -7,9 +7,6 @@ export async function TranslateContent(interaction_data: APIApplicationCommandIn
     const selectedLanguage = (interaction_data![0] as any).options[0].value;
     const content = (interaction_data![0] as any).options[1].value;
 
-    console.log(`Selected Language: ${JSON.stringify(selectedLanguage)}`);
-    console.log(`Content: ${JSON.stringify(content)}`);
-
     const response = await fetch(transURI + new URLSearchParams({
         selectedLanguage: selectedLanguage,
         content: content

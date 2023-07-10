@@ -1,8 +1,9 @@
-import { APIApplicationCommandInteraction, InteractionResponseType, InteractionType, MessageFlags } from "discord-api-types/v10"
+import { APIApplicationCommandInteraction, APIInteractionResponse, InteractionResponseType, InteractionType, MessageFlags, Permissions } from "discord-api-types/v10"
 import { DiscordInteractionApiHandler } from "./../interfaces/discord"
 import { NextApiRequest, NextApiResponse } from "next"
 import nacl from "tweetnacl"
-import { parseRawBodyAsString } from "./../utils/body-parser"
+import { parseRawBodyAsString } from "../handlers/body-parser"
+import { INTERACTION_ACK, INTERACTION_RESPOND_INSTANTLY } from "../resources/constants"
 
 // Your public key can be found on your application in the Developer Portal
 const DISCORD_APP_PUBLIC_KEY = process.env.DISCORD_APP_PUBLIC_KEY
@@ -71,20 +72,19 @@ export const withDiscordInteraction = (next: DiscordInteractionApiHandler) => as
 }
 
 
-const INTERACTION_DEFER_RESPONSE = { type: InteractionResponseType.DeferredChannelMessageWithSource as number }
-const INTERACTION_EDIT_RESPONSE = { type: InteractionResponseType.UpdateMessage as number }
-
 export async function DeferSlashCommandResponse(interaction: APIApplicationCommandInteraction, message_flags: MessageFlags)
 {
   const fetchOptions = {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ ...INTERACTION_DEFER_RESPONSE, data: { flags: message_flags } })
+    body: JSON.stringify({ ...INTERACTION_ACK, data: { flags: message_flags } })
   };
+
+  console.log(`Request: ${JSON.stringify(fetchOptions)}`);
 
   const response = await fetch(`https://discord.com/api/v10/interactions/${interaction.id}/${interaction.token}/callback`, fetchOptions);
 
-  console.log(JSON.stringify(await response));
+  console.log(`Response: ${JSON.stringify(response)}\nStatus: ${response.status}`);
 }
 
 export async function EditSlashCommandResponse(interaction: APIApplicationCommandInteraction, message_content: string, message_embeds?: any[]) {
@@ -95,9 +95,13 @@ export async function EditSlashCommandResponse(interaction: APIApplicationComman
     //body: JSON.stringify({ ...INTERACTION_EDIT_RESPONSE, data: { tts: false, content: payload, embeds: message_embeds } })
   }
 
-  console.log(DISCORD_APP_ID);
-
+  console.log(`Request: ${JSON.stringify(fetchOptions)}`);
+  
   const response = await fetch(`https://discord.com/api/v10/webhooks/${DISCORD_APP_ID}/${interaction.token}/messages/@original`, fetchOptions);
 
-  console.log(JSON.stringify(await response));
+  console.log(`Response: ${JSON.stringify(response)}\nStatus: ${response.status}`);
+}
+
+export async function SendSlashCommandResponse(response: NextApiResponse<APIInteractionResponse>, flags: MessageFlags, message_content: string, message_embeds?: any[]) {
+  response.status(200).json({ ...INTERACTION_RESPOND_INSTANTLY, data: { tts: false, flags: flags, content: message_content, embeds: message_embeds } });
 }
