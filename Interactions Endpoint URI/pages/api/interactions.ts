@@ -3,20 +3,10 @@ import { APIApplicationCommandInteraction, APIChatInputApplicationCommandInterac
 import { SendFinalSlashCommandResponse as CompleteSlashCommandExecution, withDiscordInteraction } from "../../middlewares/discord-interaction"
 import withErrorHandler from "../../middlewares/error-handler";
 import { HELP_EMBED } from "../../resources/embeds";
-import { INTERACTION_ACK, INTERACTION_ACK_PING, INTERACTION_RESPOND_INSTANTLY } from "../../resources/constants";
+import { INTERACTION_RESPOND_INSTANTLY } from "../../resources/constants";
 import { HandleTranslate } from "../../handlers/handle-translate";
 
-
-const PRIVATE_COMMAND_RESPONSE_DATA = { tts: false, flags: MessageFlags.Ephemeral }
-const PUBLIC_COMMAND_RESPONSE_DATA = { tts: false, flags: 0 }
-
-const CLOSE_INTERACTION = { ...INTERACTION_ACK_PING, data: { ...PRIVATE_COMMAND_RESPONSE_DATA } };
-
-const INVALID_COMMAND_RESPONSE = { ...INTERACTION_RESPOND_INSTANTLY, data: { ...PRIVATE_COMMAND_RESPONSE_DATA, content: "You have executed a command that does not exist in my directory. Try again later or run **/support** to contact the developers." } }
-
-const COMMAND_SUPPORT_RESPONSE = { ...INTERACTION_RESPOND_INSTANTLY, data: { ...PRIVATE_COMMAND_RESPONSE_DATA, content: "https://discord.gg/Zy5uXQUZXx" }}
-
-const COMMAND_HELP_RESPONSE = { ...INTERACTION_RESPOND_INSTANTLY, data: { ...PUBLIC_COMMAND_RESPONSE_DATA, embeds: HELP_EMBED }}
+const INVALID_COMMAND_RESPONSE = { ...INTERACTION_RESPOND_INSTANTLY, data: { flags: MessageFlags.Ephemeral, content: "You have executed a command that does not exist in my directory. Try again later or run **/support** to contact the developers." } }
 
 // disable body parsing, need the raw body as per https://discord.com/developers/docs/interactions/slash-commands#security-and-authorization
 export const config = {

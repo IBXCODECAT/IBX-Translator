@@ -8,7 +8,7 @@ export const HELP_EMBED =
       "fields": [
         {
           "name": `🌐 Communications`,
-          "value": `\`/translate\`\n`,
+          "value": `</translate:1126264590632767679>\n`,
           "inline": true
         },
         {
