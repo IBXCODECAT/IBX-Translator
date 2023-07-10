@@ -102,6 +102,6 @@ export async function EditSlashCommandResponse(interaction: APIApplicationComman
   console.log(`Response: ${JSON.stringify(response)}\nStatus: ${response.status}`);
 }
 
-export async function SendSlashCommandResponse(response: NextApiResponse<APIInteractionResponse>, flags: MessageFlags, message_content: string, message_embeds?: any[]) {
+export async function SendFinalSlashCommandResponse(response: NextApiResponse<APIInteractionResponse>, flags: MessageFlags, message_content: string, message_embeds?: any[]) {
   response.status(200).json({ ...INTERACTION_RESPOND_INSTANTLY, data: { tts: false, flags: flags, content: message_content, embeds: message_embeds } });
 }

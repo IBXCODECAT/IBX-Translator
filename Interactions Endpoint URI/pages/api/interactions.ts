@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from "next"
 import { APIApplicationCommandInteraction, APIChatInputApplicationCommandInteraction, APIInteractionResponse, InteractionResponseType, MessageFlags } from "discord-api-types/v10"
-import { withDiscordInteraction } from "../../middlewares/discord-interaction"
+import { SendFinalSlashCommandResponse as CompleteSlashCommandExecution, withDiscordInteraction } from "../../middlewares/discord-interaction"
 import withErrorHandler from "../../middlewares/error-handler";
 import { HELP_EMBED } from "../../resources/embeds";
 import { INTERACTION_ACK, INTERACTION_ACK_PING, INTERACTION_RESPOND_INSTANTLY } from "../../resources/constants";
@@ -35,12 +35,11 @@ const handler = async (
 
   switch (name) {
     case "support":
-      return res.status(200).json(COMMAND_SUPPORT_RESPONSE)
+      return await CompleteSlashCommandExecution(res, MessageFlags.Ephemeral, "https://discord.gg/Zy5uXQUZXx")
     case "help":
-      return res.status(200).json(COMMAND_HELP_RESPONSE);
+      return await CompleteSlashCommandExecution(res, MessageFlags.SuppressNotifications, "", HELP_EMBED)
     case "translate":
-      await HandleTranslate(interaction as APIChatInputApplicationCommandInteraction, res);
-      break;
+      return await HandleTranslate(interaction as APIChatInputApplicationCommandInteraction, res);
     default:
       return res.status(404).json(INVALID_COMMAND_RESPONSE)
   }

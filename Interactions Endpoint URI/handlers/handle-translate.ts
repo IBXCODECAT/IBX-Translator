@@ -1,5 +1,5 @@
 import { APIChatInputApplicationCommandInteraction, APIInteractionResponse, MessageFlags } from "discord-api-types/v10";
-import { DeferSlashCommandResponse, EditSlashCommandResponse, SendSlashCommandResponse } from "../middlewares/discord-interaction";
+import { DeferSlashCommandResponse, EditSlashCommandResponse, SendFinalSlashCommandResponse } from "../middlewares/discord-interaction";
 import { IBXTranslationObject } from "../interfaces/transObj";
 import { TranslateContent } from "../services/translate";
 import { NextApiResponse } from "next";
@@ -12,7 +12,7 @@ export async function HandleTranslate(interaction: APIChatInputApplicationComman
     {
         case 'help':
             console.log('help')
-            await SendSlashCommandResponse(res, MessageFlags.Ephemeral, 'There will be a help message here someday, and that day is not today...');
+            await SendFinalSlashCommandResponse(res, MessageFlags.Ephemeral, 'There will be a help message here someday, and that day is not today...');
             return;
 
         case 'message':
