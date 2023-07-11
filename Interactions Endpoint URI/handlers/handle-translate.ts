@@ -11,7 +11,6 @@ export async function HandleTranslate(interaction: APIChatInputApplicationComman
     switch(options![0].name)
     {
         case 'help':
-            console.log('help')
             await SendFinalSlashCommandResponse(res, MessageFlags.Ephemeral, 'There will be a help message here someday, and that day is not today...');
             return;
 
