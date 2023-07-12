@@ -38,7 +38,7 @@ export function ConvertNumberIdToObjectID(id: string)
     return paddedHexString;
 }
 
-export async function ReadSingleGuildFromDB(collectionName: string, objectId: string): Promise<any> {
+export async function ReadSingleObjectFromDB(collectionName: string, objectId: string): Promise<any> {
     try
     {
         const db = await ConnectToMongoDB();
@@ -74,7 +74,7 @@ async function UpdateSingleObjectInDB(collectionName: string, objectId: string, 
 
 export async function InsertOrUpdateSingleObjectIntoDB(collectionName: string, object: any): Promise<any> {
     
-    if(await ReadSingleGuildFromDB('guilds', object._id) != null)
+    if(await ReadSingleObjectFromDB('guilds', object._id) != null)
     {
         UpdateSingleObjectInDB('guilds', object._id, object);
         return;

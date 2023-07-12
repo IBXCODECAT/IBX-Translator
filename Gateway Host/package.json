@@ -1,26 +1,31 @@
 {
-  "name": "prototype-7-bot",
+  "name": "ibx-translator-gateway",
   "version": "1.0.0",
   "description": "",
   "main": "app.js",
+  "type": "module",
   "engines": {
     "node": "8.x",
     "npm": "*"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "npm cache clean --force && rm -rf node_modules && npm install",
-    "start": "node app.js"
+    "dev": "ts-node app.ts",
+    "build": "tsc -p .",
+    "start": "node dist/app.js"
   },
-  "author": "",
+  "author": "IBXCODECAT",
   "license": "ISC",
   "dependencies": {
     "discord.js": "^14.11.0",
     "dotenv": "^16.3.1",
     "google-translate-api": "^2.3.0",
+    "node-fetch": "^3.3.1",
     "translate-google": "^1.5.0"
   },
   "devDependencies": {
-    "eslint": "^8.43.0"
+    "eslint": "^8.43.0",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.1.6"
   }
 }
