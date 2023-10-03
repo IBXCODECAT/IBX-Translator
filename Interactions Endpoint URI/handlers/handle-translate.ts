@@ -38,7 +38,7 @@ export async function HandleTranslateWithDropdown(interaction: APIMessageApplica
 
     const msg = interaction.message?.content!;
 
-    await SendFinalSlashCommandResponse(res, MessageFlags.SuppressNotifications, messageObject.content, undefined, TRANSLATE_THIS_COMPONENTS);
+    await SendFinalSlashCommandResponse(res, MessageFlags.Ephemeral, messageObject.content, undefined, TRANSLATE_THIS_COMPONENTS);
     return;
 }
 
