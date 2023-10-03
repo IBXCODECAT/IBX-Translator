@@ -1,4 +1,4 @@
-import { APIChatInputApplicationCommandInteraction, APIInteractionResponse, MessageFlags } from "discord-api-types/v10";
+import { APIApplicationCommand, APIApplicationCommandInteraction, APIChatInputApplicationCommandInteraction, APIInteractionResponse, APIMessageApplicationCommandInteraction, APIMessageInteraction, MessageFlags } from "discord-api-types/v10";
 import { DeferSlashCommandResponse, EditSlashCommandResponse, SendFinalSlashCommandResponse } from "../middlewares/discord-interaction";
 import { IBXTranslationObject } from "../interfaces/transObj";
 import { TranslateContent } from "../services/translate";
@@ -27,4 +27,10 @@ export async function HandleTranslate(interaction: APIChatInputApplicationComman
             await EditSlashCommandResponse(interaction, `${translation_preview.translation}`);
             return;
     }
+}
+
+export async function HandleTranslateWithButtons(interaction: APIMessageApplicationCommandInteraction, res: NextApiResponse<APIInteractionResponse>)
+{
+    await SendFinalSlashCommandResponse(res, MessageFlags.Ephemeral, "This command is not yet implemented.");
+    return;
 }

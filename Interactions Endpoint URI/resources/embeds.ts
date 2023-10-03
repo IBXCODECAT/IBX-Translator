@@ -27,7 +27,7 @@ export const HELP_EMBED =
         },
         {
           "name": "\u200B",
-          "value": `The commands listed below may have subcommands. For detailed help with a specific command run the command followed by the **'help'** subcommand.`
+          "value": `The commands listed above may have subcommands. For detailed help with a specific command run the command followed by the **'help'** subcommand.`
         }
       ]
     }
