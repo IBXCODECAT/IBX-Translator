@@ -11,9 +11,12 @@ export default async function handler(req: any, res: any) {
     //If there are missing query parameters deny the request (BAD REQUEST)
     if(selectedLanguage == undefined || selectedLanguage == "") return res.status(400).json( { error: "400 BAD REQUEST", eason: 'No language specified', params: { selectedLanguage, content } } );
     if(content == undefined || content == "") return res.status(400).json( { error: "400 BAD REQUEST", reason: 'No content provided', params: { selectedLanguage, content } } )
+
+    //Replace all non alphanumeric characters with nothing
+    let textToTranslate = content.replace(/[^a-zA-Z0-9\s.!?]/g, '');
     
     //Construct our translation object
-    const transObj = { d: [true, 'true', content] }
+    const transObj = { d: [true, 'true', textToTranslate] }
     
     let result;
 
