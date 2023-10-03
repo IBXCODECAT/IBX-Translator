@@ -47,7 +47,7 @@ export async function HandleTranslateSelection(interaction: APIMessageComponentS
     const { data: { custom_id, values }, } = interaction
     const messageContent = interaction.message?.content!;
 
-    await DeferInteractionResponse(interaction, MessageFlags.SuppressNotifications);
+    await DeferInteractionResponse(interaction, MessageFlags.Ephemeral);
 
     const translation_msg: IBXTranslationObject = await TranslateContent(values![0], messageContent);
 
