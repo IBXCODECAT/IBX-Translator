@@ -4,7 +4,6 @@ import { NextApiRequest, NextApiResponse } from "next"
 import nacl from "tweetnacl"
 import { parseRawBodyAsString } from "../handlers/body-parser"
 import { INTERACTION_ACK, INTERACTION_RESPOND_INSTANTLY } from "../resources/constants"
-import { isMessageComponentSelectMenuInteraction } from "discord-api-types/utils/v10"
 
 // Your public key can be found on your application in the Developer Portal
 const DISCORD_APP_PUBLIC_KEY = process.env.DISCORD_APP_PUBLIC_KEY
@@ -33,45 +32,55 @@ export const verifyHeaders = ({ timestamp, rawBody, signature }: VerifyHeadersAr
 }
 
 /**
- * Middleware to verify the validity of the incoming webhook request according to https://discord.com/developers/docs/interactions/slash-commands#security-and-authorization
- * When using this middleware, your API route handler must disable body parsing
+ * Middleware to verify the validity of the incoming webhook request according to
+ * https://discord.com/developers/docs/interactions/slash-commands#security-and-authorization
+ * When using this middleware, your API route handler must disable body parsing.
  */
 export const withDiscordInteraction = (next: DiscordInteractionApiHandler) => async (
   req: NextApiRequest,
   res: NextApiResponse
 ) => {
-  const signature = req.headers["x-signature-ed25519"]
-  const timestamp = req.headers["x-signature-timestamp"]
+  // Retrieve the signature and timestamp from request headers
+  const signature = req.headers["x-signature-ed25519"];
+  const timestamp = req.headers["x-signature-timestamp"];
+
+  // Check if signature and timestamp headers exist and are of the correct type
   if (typeof signature !== "string" || typeof timestamp !== "string") {
-    return res.status(401).end("invalid request signature")
+    return res.status(401).end("invalid request signature");
   }
 
   try {
-    const rawBody = await parseRawBodyAsString(req)
-    const isVerified = verifyHeaders({ timestamp, rawBody, signature })
+    // Parse the raw request body as a string
+    const rawBody = await parseRawBodyAsString(req);
+
+    // Verify the request headers using the provided signature, timestamp, and raw body
+    const isVerified = verifyHeaders({ timestamp, rawBody, signature });
+
+    // If the request is not verified, return a 401 (Unauthorized) response
     if (!isVerified) {
-      return res.status(401).end("invalid request signature")
+      return res.status(401).end("invalid request signature");
     }
 
-    // Parse the message as JSON
-    const interaction: APIApplicationCommandInteraction = JSON.parse(rawBody)
-    const { type } = interaction
+    // Parse the message body as JSON into an interaction object
+    const interaction: APIApplicationCommandInteraction = JSON.parse(rawBody);
+    const { type } = interaction;
 
     //@ts-ignore
     if (type === InteractionType.Ping) {
       // PING message, respond with ACK (part of Discord's security and authorization protocol)
-      return res.status(200).json({ type: 1 })
+      return res.status(200).json({ type: 1 });
     } else {
-      return await next(req, res, interaction)
+      // Call the next middleware or route handler with the parsed interaction
+      return await next(req, res, interaction);
     }
   } catch (err) {
+    // Handle any errors that occur during processing
     return res.status(500).json({
       statusCode: 500,
       message: "Oops, something went wrong parsing the request!",
-    })
+    });
   }
-}
-
+};
 
 export async function DeferInteractionResponse(interaction: APIInteraction, message_flags: MessageFlags)
 {
