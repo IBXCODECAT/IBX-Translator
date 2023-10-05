@@ -1,5 +1,4 @@
 const translate = require('translate-google');
-import filter from 'bad-words';
 
 export default async function handler(req: any, res: any) {
     
@@ -13,10 +12,8 @@ export default async function handler(req: any, res: any) {
     if(selectedLanguage == undefined || selectedLanguage == "") return res.status(400).json( { error: "400 BAD REQUEST", eason: 'No language specified', params: { selectedLanguage, content } } );
     if(content == undefined || content == "") return res.status(400).json( { error: "400 BAD REQUEST", reason: 'No content provided', params: { selectedLanguage, content } } )
     
-    var _filter = new filter();
-
     //Construct our translation object
-    const transObj = { d: [true, 'true', _filter.clean(content)] }
+    const transObj = { d: [true, 'true', content] }
     
     let result;
 
