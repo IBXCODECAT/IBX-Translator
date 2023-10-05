@@ -38,8 +38,8 @@ const handler = async (
         // Execute 'help' command and respond with a message with suppressed notifications and an embedded help message
         return await CompleteSlashCommandExecution(res, MessageFlags.SuppressNotifications, "", HELP_EMBED);
       case "invite":
-        // Execute 'invite' command and respond with an ephemeral message containing a link
-        return await CompleteSlashCommandExecution(res, MessageFlags.Ephemeral, `[Click to Invite IBX Translator🌐 to your server!](https://discord.com/api/oauth2/authorize?client_id=${process.env.CLIENT_ID}&permissions=0&scope=bot%20applications.commands)`);
+        // Execute 'invite' command and respond with a message containing a link with supressed notifications
+        return await CompleteSlashCommandExecution(res, MessageFlags.SuppressEmbeds, `[Click to Invite IBX Translator🌐 to your server!](https://discord.com/api/oauth2/authorize?client_id=${process.env.CLIENT_ID}&permissions=0&scope=bot%20applications.commands)`);
       case "translate":
         // Execute 'translate' command and call the 'HandleTranslate' function
         return await HandleTranslate(interaction as APIChatInputApplicationCommandInteraction, res);
