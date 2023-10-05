@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "bad-words": "^3.0.4",
     "next": "13.4.8",
     "react": "18.2.0",
     "react-dom": "18.2.0",
