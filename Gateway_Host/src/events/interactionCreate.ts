@@ -1,12 +1,8 @@
-//THIS EVENT IS DEPRECATED! INTERACTIONS ARE NOW HANDLED ON AN HTTP ENPOINT
-
-console.warn(`\x1b[33mWARNING: Event 'InteractionCreate' is depricated! Interactions are now handled on an HTTP enpoint!\x1b[0m`);
-
-const { Events, Collection } = require('discord.js');
+import { Events, Collection, Interaction } from 'discord.js';
 
 module.exports = {
 	name: Events.InteractionCreate,
-	async execute(interaction) {
+	async execute(interaction: Interaction) {
 
 		if (!interaction.isChatInputCommand()) return;
 

@@ -1,8 +1,10 @@
-const { SlashCommandBuilder } = require('discord.js');
+import { SlashCommandBuilder, Interaction } from 'discord.js';
+
 const translate = require('translate-google');
 
 module.exports = {
 	cooldown: 15,
+	guilds: null,
 	data: new SlashCommandBuilder()
 		.setName('translate')
 		.setNameLocalizations({
@@ -81,48 +83,15 @@ module.exports = {
 					"es-ES": 'Especificar si este mensaje debe ser enviado en este canal'
 				}),
 
-	async execute(interaction) {
+	async execute(interaction: ) {
 
 		await interaction.deferReply({ ephemeral: true });
-
-		const ephemeralLocales = {
-			"en-GB": 'Your message content has been processed: ',
-			"en-US": 'Your message content has been processed: ',
-			de: 'Der Inhalt Ihrer Nachricht wurde verarbeitet: ',
-			ru: 'Содержание вашего сообщения обработано: ',
-			"es-ES": 'El contenido de su mensaje ha sido procesado: '
-		};
-
-		const sendMessageLocales = {
-			"en-GB": `<@${interaction.user.id}> says: `,
-			"en-US": `<@${interaction.user.id}> says: `,
-			de: `<@${interaction.user.id}> sagt `,
-			ru: `<@${interaction.user.id}> говорит: `,
-			"es-ES": `<@${interaction.user.id}> dice: `
-		};
 
 		const transObj = {
 			d: [true, 'true', interaction.getString('text-content')],
 		}
 
 		const selectedLanguage = interaction.getString('language');
-		
-		translate(transObj, { to: selectedLanguage, except:['a']}).then(res => {
-			
-			//Update our interaction reply to let the user know that we have processed their request!
-			interaction.editReply(ephemeralLocales[selectedLanguage]);
-			
-			if(public)
-			{
-				//send message
-			}
-
-		}).catch(err => {
-			console.error(err);
-			interaction.editReply({ content: 'There was an error while processing your request'});
-		});
-
-		const public = interaction.options.getBoolean('public');
 
 		await interaction.reply({
 			content: `This server is ${interaction.guild.name} and has ${interaction.guild.memberCount} members.`,
