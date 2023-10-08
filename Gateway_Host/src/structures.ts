@@ -4,17 +4,20 @@ export interface ICooldown {
     id: string;
     durationInSeconds: number;
     issuedAtTimestamp: number;
+    userId: string;
 }
 
 export class Cooldown implements ICooldown {
     public id: ICooldown["id"];
     public durationInSeconds: ICooldown["durationInSeconds"];
     public issuedAtTimestamp: ICooldown["issuedAtTimestamp"];
+    public userId: ICooldown["userId"];
 
-    constructor(id: ICooldown["id"], durationInSeconds: ICooldown["durationInSeconds"], issuedAtTimestamp: ICooldown["issuedAtTimestamp"]) {
+    constructor(id: ICooldown["id"], durationInSeconds: ICooldown["durationInSeconds"], issuedAtTimestamp: ICooldown["issuedAtTimestamp"], user: ICooldown["userId"]) {
         this.id = id;
         this.durationInSeconds = durationInSeconds;
         this.issuedAtTimestamp = issuedAtTimestamp;
+        this.userId = user;
     }
 }
 
@@ -22,7 +25,7 @@ export interface ICommand {
     cooldown: number;
     guilds: string[] | null;
     data: {
-        name: string;
+        commandName: string;
         nameLocalizations: {
             [key: string]: string;
         };

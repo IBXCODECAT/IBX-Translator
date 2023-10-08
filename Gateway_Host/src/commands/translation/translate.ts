@@ -1,4 +1,5 @@
 import { SlashCommandBuilder, Interaction } from 'discord.js';
+import { ClientData } from '../../structures';
 
 const translate = require('translate-google');
 
@@ -83,7 +84,7 @@ module.exports = {
 					"es-ES": 'Especificar si este mensaje debe ser enviado en este canal'
 				}),
 
-	async execute(interaction: ) {
+	async execute(client: ClientData, interaction: any) {
 
 		await interaction.deferReply({ ephemeral: true });
 

@@ -1,8 +1,9 @@
 // Import necessary modules and dependencies
 require('dotenv').config();
-import * as fs from 'fs';
-import * as path from 'path';
-import { Client, Events, GatewayIntentBits } from 'discord.js';
+import fs from 'fs';
+import path from 'path';
+
+import { Client, GatewayIntentBits } from 'discord.js';
 import { ClientData } from './structures';
 import { Cooldown, Command } from './structures';
 
@@ -20,7 +21,7 @@ const commandFolders = fs.readdirSync(foldersPath);
 // Loop through command folders
 for (const folder of commandFolders) {
     const commandsPath = path.join(foldersPath, folder);
-    const commandFiles = fs.readdirSync(commandsPath).filter(file => file.endsWith('.js'));
+    const commandFiles: string[] = fs.readdirSync(commandsPath).filter((file: string) => file.endsWith('.js'));
 
     // Loop through command files in each folder
     for (const file of commandFiles) {
@@ -40,7 +41,7 @@ for (const folder of commandFolders) {
 
 // Define the path to the directory containing event files
 const eventsPath = path.join(__dirname, 'events');
-const eventFiles = fs.readdirSync(eventsPath).filter(file => file.endsWith('.js'));
+const eventFiles = fs.readdirSync(eventsPath).filter((file: string) => file.endsWith('.js'));
 
 // Loop through event files
 for (const file of eventFiles) {

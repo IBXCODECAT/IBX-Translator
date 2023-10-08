@@ -1,3 +1,5 @@
+/*
+
 require('dotenv').config();
 
 const clientId = process.env.CLIENT_ID;
@@ -56,7 +58,7 @@ const rest = new REST().setToken(token);
 		/*const data = await rest.put(
 			Routes.applicationGuildCommands(clientId, guildId),
 			{ body: commands },
-		);*/
+		);
 
 		//console.log(`Successfully reloaded ${data.length} guild application (/) commands.`);
 
@@ -74,3 +76,4 @@ const rest = new REST().setToken(token);
 		console.error(error);
 	}
 })();
+*/
