@@ -2,14 +2,13 @@
 require('dotenv').config();
 import * as fs from 'fs';
 import * as path from 'path';
-import { Client, GatewayIntentBits } from 'discord.js';
-import { ClientData } from './structures/classes';
-import { Command } from './structures/classes';
-import { ICommand, ICooldown } from './structures/interfaces';
+import { Client, Events, GatewayIntentBits } from 'discord.js';
+import { ClientData } from './structures';
+import { Cooldown, Command } from './structures';
 
 // Initialize arrays to store commands and cooldowns
 const commands: Command[] = [];
-const cooldowns: ICooldown[] = [];
+const cooldowns: Cooldown[] = [];
 
 // Create a ClientData instance to store client-related data
 const client = new ClientData(new Client({ intents: [GatewayIntentBits.Guilds] }), commands, cooldowns);
@@ -50,9 +49,9 @@ for (const file of eventFiles) {
 
     // Attach event handlers to the client
     if (event.once) {
-        client.discordClient.once(event.name, (...args) => event.execute(...args));
+        client.discordClient.once(event.name, (...args) => event.execute(client, ...args));
     } else {
-        client.discordClient.on(event.name, (...args) => event.execute(...args));
+        client.discordClient.on(event.name, (...args) => event.execute(client, ...args));
     }
 }
 

@@ -1,14 +1,14 @@
-import { Client, Events } from 'discord.js';
+import { Events } from 'discord.js';
+import { ClientData } from '../../structures';
 
 module.exports = {
     name: Events.ClientReady,
     once: true,
-    execute(client: Client) {
+    execute(client: ClientData) {
 
-        if (client.user === null) return;
-        if (client.shard === null) return;
+        if (client.discordClient.user === null) return;
+        if (client.discordClient.shard === null) return;
 
-        console.log(`Ready! Logged in as ${client.user!.tag}`);
-
+        console.log(`Ready! Authenticated in as ${client.discordClient.user!.username}`);
     }
 }

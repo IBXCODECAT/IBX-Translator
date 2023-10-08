@@ -1,16 +1,17 @@
 import { Events, Collection, Interaction } from 'discord.js';
+import { ClientData, Command } from '../../structures';
 
 module.exports = {
 	name: Events.InteractionCreate,
-	async execute(interaction: Interaction) {
+	async execute(client: ClientData, interaction: Interaction) {
 
 		if (!interaction.isChatInputCommand()) return;
 
-		const command = interaction.client.commands.get(interaction.commandName);
+		const command: Command = client.commands.get(interaction.commandName);
 
 		if (!command) return;
 
-		const { cooldowns } = interaction.client;
+		const { cooldowns } = client;
 
 		if (!cooldowns.has(command.data.name)) {
 			cooldowns.set(command.data.name, new Collection());
@@ -34,7 +35,7 @@ module.exports = {
 		setTimeout(() => timestamps.delete(interaction.user.id), cooldownAmount);
 
 		try {
-			await command.execute(interaction);
+			await command.execute(client, interaction);
 		} catch (error) {
 			console.error(error);
 			await interaction.reply({ content: 'There was an error while executing this command!', ephemeral: true });
