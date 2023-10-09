@@ -13,13 +13,6 @@ export default {
 		.setDMPermission(true)
 		.setDefaultMemberPermissions(PermissionFlagsBits.SendMessages)
 		.setName('translate')
-		.setNameLocalizations({
-			"en-GB": 'translate',
-			"en-US": 'translate',
-			de: 'übersetzen',
-			ru: 'переводить',
-			"es-ES": 'traducir'
-		})
 		.setDescription('translates a message.')
 		.setDescriptionLocalizations({
 			'en-GB': 'translates a message.',
@@ -30,63 +23,28 @@ export default {
 		})
 		.addStringOption((option: SlashCommandStringOption) =>
 			option.setName('content')
-				.setNameLocalizations({
-					"en-GB": 'text-content',
-					"en-US": 'text-content',
-					de: 'Textinhalt',
-					ru: 'текстовое-содержание',
-					"es-ES": 'contenido-del-texto'
-				})
 				.setDescription('Specify the content I should translate.')
-				.setDescriptionLocalizations({
-					"en-GB": 'Specify the content I should translate.',
-					"en-US": 'Specify the content I should translate.',
-					de: 'Geben Sie den Inhalt an, den ich übersetzen soll',
-					ru: 'Укажите контент, который я должен перевести',
-					"es-ES": 'Especificar el contenido que debo traducir'
-				})
 				.setRequired(true))
 		.addStringOption((option: SlashCommandStringOption) =>
 			option.setName('language')
-				.setNameLocalizations({
-					"en-GB": 'language',
-					'en-US': 'language',
-					de: 'Sprache',
-					ru: 'язык',
-					"es-ES": 'idioma'
-				})
 				.setDescription('Specify the language I should translate the content to.')
-				.setDescriptionLocalizations({
-					"en-GB": 'Specify the language I should translate the content to.',
-					"en-US": 'Specify the language I should translate the content to.',
-					de: 'Geben Sie die Sprache an, in die ich den Inhalt übersetzen soll',
-					ru: 'Укажите язык, на который я должен перевести контент',
-					"es-ES": 'Especificar el idioma al que debo traducir el contenido'
-				})
 				.setRequired(true)
 				.addChoices(
+					{ name: 'Deutsch', value: 'de' },
 					{ name: 'English (British)', value: 'en-GB' },
 					{ name: 'English (United States)', value: 'en-US' },
-					{ name: 'Deutsch', value: 'de' },
-					{ name: 'РУССКИЙ', value: 'ru' },
 					{ name: 'Español', value: 'es-ES' },
+					{ name: 'Русский', value: 'ru' },
 				))
 		.addBooleanOption((option: SlashCommandBooleanOption) =>
 			option.setName('public')
-				.setNameLocalizations({
-					"en-GB": 'public',
-					"en-US": 'public',
-					de: 'öffentlich',
-					ru: 'публичный',
-					"es-ES": 'público'
-				})
 				.setDescription('Specify if this message should be sent to everyone in this channel.')),
 
 	async execute(client: ClientData, interaction: Interaction) {
 
 		if (!interaction.isChatInputCommand()) return;
 
-		await interaction.deferReply({ ephemeral: true });
+		await interaction.deferReply({ ephemeral: !interaction.options.getBoolean('public') ?? false });
 
 		try {
 			const content = interaction.options.getString('content');
@@ -105,8 +63,6 @@ export default {
 
 			console.log(content!, interaction.locale!, selectedLanguage!);
 
-			await interaction.editReply({ content: `Translating from ${interaction.locale!} to ${selectedLanguage}` });
-
 			const result = await translate(
 				content!,
 				{
@@ -115,7 +71,8 @@ export default {
 				}
 			);
 
-			await interaction.followUp({ content: `${interaction.user} says ${result}` });
+			await interaction.editReply({ content: `${result}` });
+
 		} catch (err: any) {
 			console.error(chalk.redBright(err.stack));
 			await interaction.editReply({ content: `There was an error while executing this command!` });

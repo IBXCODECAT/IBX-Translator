@@ -13,6 +13,7 @@ const token = process.env.DISCORD_BOT_TOKEN;
 
 const rest = new REST({ version: '9' }).setToken(token);
 
+/*
 rest.get(Routes.applicationCommands(clientId))
     .then((data: any) => {
         const promises = [];
@@ -22,8 +23,9 @@ rest.get(Routes.applicationCommands(clientId))
             const deleteUrl = `${Routes.applicationCommands(clientId)}/${command.id}`;
             promises.push(rest.delete(deleteUrl));
         }
-        return Promise.all(promises);
+        return Promise.all( promises);
     });
+*/
 
 const commands = [];
 
@@ -42,7 +44,7 @@ for (const folder of commandFolders) {
 		const command = m_command.default;
 
 		console.log(JSON.stringify(command.data, null, 2));
-		
+
 		if ('data' in command && 'execute' in command) {
 			console.log((command.data as SlashCommandBuilder));
 			commands.push((command.data as SlashCommandBuilder).toJSON());
