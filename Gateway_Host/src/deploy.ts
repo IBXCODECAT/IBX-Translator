@@ -7,12 +7,26 @@ config();
 
 import chalk from 'chalk';
 import { SlashCommandBuilder } from 'discord.js';
+import i18next from 'i18next';
+import I18NextFSBackend from 'i18next-fs-backend';
 
 const clientId = process.env.CLIENT_ID;
 const token = process.env.DISCORD_BOT_TOKEN;
 
 const rest = new REST({ version: '9' }).setToken(token);
 
+// Initialize i18next
+i18next
+  .use(I18NextFSBackend)
+  .init({
+    lng: 'en', // The default language to use
+    fallbackLng: 'en', // Fallback language in case a translation is missing
+    initImmediate: false, // Set to false to prevent calling the callback function before the translation data is loaded
+    backend: {
+      loadPath: `${__dirname}\\locales\\{{lng}}.json`, // Path to your translation files
+    },
+  });
+  
 /*
 rest.get(Routes.applicationCommands(clientId))
     .then((data: any) => {

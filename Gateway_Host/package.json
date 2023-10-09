@@ -20,7 +20,9 @@
     "discord.js": "^14.11.0",
     "dotenv": "^16.3.1",
     "free-translate": "^0.6.1",
-    "google-translate-api": "^2.3.0"
+    "google-translate-api": "^2.3.0",
+    "i18next": "^23.5.1",
+    "i18next-fs-backend": "^2.2.0"
   },
   "devDependencies": {
     "@types/node": "^20.8.3",

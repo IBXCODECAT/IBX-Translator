@@ -4,9 +4,11 @@ import fs from 'fs';
 import path from 'path';
 
 import { Client, GatewayIntentBits } from 'discord.js';
-import { ClientData, GLOBAL_COMMONJS_FILE_EXTENSION } from './structures';
-import { Cooldown, Command } from './structures';
+import { ClientData, GLOBAL_COMMONJS_FILE_EXTENSION } from './resources/structures';
+import { Cooldown, Command } from './resources/structures';
 import chalk from 'chalk';
+import i18next from 'i18next';
+import I18NextFSBackend from 'i18next-fs-backend';
 
 // Initialize arrays to store commands and cooldowns
 const commands: Command[] = [];
@@ -18,6 +20,23 @@ const client = new ClientData(new Client({ intents: [GatewayIntentBits.Guilds] }
 // Define the path to the directory containing command files
 const foldersPath = path.join(__dirname, 'commands');
 const commandFolders = fs.readdirSync(foldersPath);
+
+// Initialize i18next
+i18next
+  .use(I18NextFSBackend)
+  .init({
+    lng: 'en', // The default language to use
+    fallbackLng: 'en', // Fallback language in case a translation is missing
+    initImmediate: false, // Set to false to prevent calling the callback function before the translation data is loaded
+    backend: {
+      loadPath: `${__dirname}\\locales\\{{lng}}.json`, // Path to your translation files
+    },
+  });
+
+  console.log(`${__dirname}\\locales\\{{lng}}.json`);
+  
+  const i18next_test = i18next.t('cmd.slash.translate.description', { lng: 'ru'});
+  console.log(chalk.greenBright(i18next_test));
 
 console.log(chalk.cyanBright(`Found ${commandFolders.length} command folder(s)...`));
 

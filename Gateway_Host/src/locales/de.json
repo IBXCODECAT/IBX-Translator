@@ -1,0 +1,24 @@
+{
+    "cmd": {
+        "slash": {
+            "translate": {
+                "title": "Übersetzen",
+                "description": "Übersetzen Sie Text in eine andere Sprache",
+                "option": {
+                    "content": {
+                        "name": "Inhalt",
+                        "description": "Der zu übersetzende Text"
+                    },
+                    "language": {
+                        "name": "Sprache",
+                        "description": "Die Sprache, in die übersetzt werden soll"
+                    },
+                    "public": {
+                        "name": "Öffentlich",
+                        "description": "Soll ich diese Übersetzung als Chat-Nachricht posten"
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,5 +1,5 @@
 import { Events } from 'discord.js';
-import { ClientData } from '../structures';
+import { ClientData } from '../resources/structures';
 import chalk from 'chalk';
 
 export default {
@@ -7,6 +7,6 @@ export default {
     once: false,
     execute(client: ClientData, error: any) {
 
-        console.warn(chalk.redBright(error));
+        console.error(chalk.redBright(error));
     }
 }

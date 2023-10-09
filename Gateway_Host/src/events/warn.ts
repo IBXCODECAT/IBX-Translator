@@ -1,5 +1,5 @@
 import { Events } from 'discord.js';
-import { ClientData } from '../structures';
+import { ClientData } from '../resources/structures';
 import chalk from 'chalk';
 
 export default {

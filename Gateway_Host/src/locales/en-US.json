@@ -1,0 +1,25 @@
+{
+    "test": "i18Next is working and ready for translations!",
+    "cmd": {
+        "slash": {
+            "translate": {
+                "title": "Translate",
+                "description": "Translate text to another language",
+                "options": {
+                    "content": {
+                        "name": "Content",
+                        "description": "The text to translate"
+                    },
+                    "language": {
+                        "name": "Language",
+                        "description": "The language to translate to"
+                    },
+                    "public": {
+                        "name": "Public",
+                        "description": "Wether or not I should post this translation as a message"
+                    }
+                }
+            }
+        }
+    }
+}

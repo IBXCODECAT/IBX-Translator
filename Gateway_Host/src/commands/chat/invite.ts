@@ -1,5 +1,5 @@
 import { SlashCommandBuilder, Interaction, PermissionFlagsBits, SlashCommandStringOption, SlashCommandBooleanOption } from 'discord.js';
-import { ADD_TO_SERVER_URL, ClientData } from '../../structures';
+import { ADD_TO_SERVER_URL, ClientData } from '../../resources/structures';
 import { translate } from 'free-translate';
 import { Locale } from 'free-translate/dist/types/locales';
 import chalk from 'chalk';

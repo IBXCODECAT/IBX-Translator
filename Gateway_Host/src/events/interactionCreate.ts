@@ -1,5 +1,5 @@
 import { Events, Collection, Interaction } from 'discord.js';
-import { ClientData, Command } from '../structures';
+import { ClientData, Command } from '../resources/structures';
 
 export default {
 	name: Events.InteractionCreate,

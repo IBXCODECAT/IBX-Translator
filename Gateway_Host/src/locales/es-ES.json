@@ -1,0 +1,24 @@
+{
+    "cmd": {
+        "slash": {
+            "translate": {
+                "title": "Traducir",
+                "description": "Traducir texto a otro idioma",
+                "option": {
+                    "content": {
+                        "name": "Contenido",
+                        "description": "El texto a traducir"
+                    },
+                    "language": {
+                        "name": "Idioma",
+                        "description": "El idioma al que traducir"
+                    },
+                    "public": {
+                        "name": "Público",
+                        "description": "Si debo o no publicar esta traducción como un mensaje"
+                    }
+                }
+            }
+        }
+    }
+}

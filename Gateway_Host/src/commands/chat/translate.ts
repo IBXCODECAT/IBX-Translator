@@ -1,8 +1,10 @@
 import { SlashCommandBuilder, Interaction, PermissionFlagsBits, SlashCommandStringOption, SlashCommandBooleanOption } from 'discord.js';
-import { ClientData } from '../../structures';
+import { ClientData } from '../../resources/structures';
 import { translate } from 'free-translate';
 import { Locale } from 'free-translate/dist/types/locales';
 import chalk from 'chalk';
+
+import i18next from 'i18next';
 
 export default {
 	commandName: 'translate',
@@ -13,13 +15,13 @@ export default {
 		.setDMPermission(true)
 		.setDefaultMemberPermissions(PermissionFlagsBits.SendMessages)
 		.setName('translate')
-		.setDescription('translates a message.')
+		.setDescription(i18next.t('cmd.slash.translate.description', { lng: 'en' }))
 		.setDescriptionLocalizations({
-			'en-GB': 'translates a message.',
-			'en-US': 'translates a message.',
-			de: 'übersetzt eine Nachricht',
-			ru: 'переводит сообщение',
-			"es-ES": 'traduce un mensaje'
+			'en-GB': i18next.t('cmd.slash.translate.description', { lng: 'en-GB' }),
+			'en-US': i18next.t('cmd.slash.translate.description', { lng: 'en-US' }),
+			'de': i18next.t('cmd.slash.translate.description', { lng: 'de' }),
+			'ru': i18next.t('cmd.slash.translate.description', { lng: 'ru' }),
+			"es-ES": i18next.t('cmd.slash.translate.description', { lng: 'es-ES' })
 		})
 		.addStringOption((option: SlashCommandStringOption) =>
 			option.setName('content')
