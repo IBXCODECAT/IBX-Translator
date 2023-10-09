@@ -1,5 +1,7 @@
 import { Client, Interaction } from 'discord.js';
 
+export const GLOBAL_COMMONJS_FILE_EXTENSION = '.js';
+
 export interface ICooldown {
     id: string;
     durationInSeconds: number;
@@ -22,6 +24,7 @@ export class Cooldown implements ICooldown {
 }
 
 export interface ICommand {
+    commandName: string;
     cooldown: number;
     guilds: string[] | null;
     data: {
@@ -60,13 +63,15 @@ export interface ICommand {
 
 export class Command implements ICommand {
 
+    public commandName: ICommand["commandName"];
     public cooldown: ICommand["cooldown"];
     public data: ICommand["data"];
     public guilds: ICommand["guilds"];
     public execute: ICommand["execute"];
 
-    constructor(cooldown: ICommand["cooldown"], data: ICommand["data"], execute: ICommand["execute"], guilds: ICommand["guilds"]) {
+    constructor(cooldown: ICommand["cooldown"], commandName: ICommand["commandName"], data: ICommand["data"], execute: ICommand["execute"], guilds: ICommand["guilds"]) {
         this.cooldown = cooldown;
+        this.commandName = commandName;
         this.data = data;
         this.execute = execute;
         this.guilds = guilds;

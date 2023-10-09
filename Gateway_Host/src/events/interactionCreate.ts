@@ -11,17 +11,19 @@ module.exports = {
 		{
 			let command: any;
 			let commandResolved: boolean = false;
-			
+
 			client.commands.forEach((cmd) => {
-				if(cmd.data.commandName === interaction.commandName)
+				if(cmd.commandName === interaction.commandName)
 				{
 					command = cmd;
 					commandResolved = true;
 				}
 			});
 
-			if(command !instanceof Command) return;
+			if(!commandResolved) return;
 			
+			console.log(command);
+
 			try {
 				await command.execute(client, interaction);
 			} catch (error) {

@@ -1,10 +1,7 @@
-/*
-
 require('dotenv').config();
 
 const clientId = process.env.CLIENT_ID;
 const token = process.env.DISCORD_BOT_TOKEN;
-const guildId = process.env.MASTER_GUILD_ID;
 
 const { REST, Routes } = require('discord.js');
 const fs = require('node:fs');
@@ -20,7 +17,7 @@ for (const folder of commandFolders) {
 	// Grab all the command files from the commands directory you created earlier
 	const commandsPath = path.join(foldersPath, folder);
 	const commandFiles = fs.readdirSync(commandsPath).filter(file => file.endsWith('.js'));
-	
+
 	// Grab the SlashCommandBuilder#toJSON() output of each command's data for deployment
 	for (const file of commandFiles) {
 		const filePath = path.join(commandsPath, file);
@@ -36,11 +33,10 @@ for (const folder of commandFolders) {
 // Construct and prepare an instance of the REST module
 const rest = new REST().setToken(token);
 
+
 //Command Deployment
 (async () => {
 	try {
-		
-		/*
 		// Delete all testing guild-based commands
 		rest.put(Routes.applicationGuildCommands(clientId, guildId), { body: [] })
 			.then(() => console.log('Successfully deleted all guild commands.'))
@@ -50,30 +46,9 @@ const rest = new REST().setToken(token);
 		rest.put(Routes.applicationCommands(clientId), { body: [] })
 			.then(() => console.log('Successfully deleted all application commands.'))
 			.catch(console.error);
-		*/
-		
-		//console.log(`Started refreshing ${commands.length} guild application (/) commands.`);
 
-		// The put method is used to fully refresh all commands in the guild with the current set
-		/*const data = await rest.put(
-			Routes.applicationGuildCommands(clientId, guildId),
-			{ body: commands },
-		);
-
-		//console.log(`Successfully reloaded ${data.length} guild application (/) commands.`);
-
-		console.log(`Started refreshing ${commands.length} global application (/) commands.`);
-
-		const globalData = await rest.put(
-			Routes.applicationCommands(clientId),
-			{ body: commands },
-		);
-
-		console.log(`Successfully reloaded ${globalData.length} global application (/) commands.`);
-
-	} catch (error) {
-		// And of course, make sure you catch and log any errors!
+	}
+	catch (error) {
 		console.error(error);
 	}
-})();
-*/
+});

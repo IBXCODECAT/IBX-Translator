@@ -4,6 +4,7 @@ import { ClientData } from '../../structures';
 const translate = require('translate-google');
 
 module.exports = {
+	commandName: 'translate',
 	cooldown: 15,
 	guilds: null,
 	data: new SlashCommandBuilder()
@@ -84,19 +85,18 @@ module.exports = {
 					"es-ES": 'Especificar si este mensaje debe ser enviado en este canal'
 				}),
 
-	async execute(client: ClientData, interaction: any) {
+	async execute(client: ClientData, interaction: Interaction) {
+
+		if(!interaction.isChatInputCommand()) return;
 
 		await interaction.deferReply({ ephemeral: true });
-
+		
 		const transObj = {
-			d: [true, 'true', interaction.getString('text-content')],
+			d: [true, 'true', interaction.options.getString('text-content')],
 		}
 
-		const selectedLanguage = interaction.getString('language');
+		const selectedLanguage = interaction.options.getString('language');
 
-		await interaction.reply({
-			content: `This server is ${interaction.guild.name} and has ${interaction.guild.memberCount} members.`,
-			ephemeral: true
-		});
+		await interaction.editReply({ content: `Translating to ${selectedLanguage}...` });
 	},
 };
