@@ -1,8 +1,11 @@
 import { SlashCommandBuilder, Interaction, PermissionFlagsBits, SlashCommandStringOption, SlashCommandBooleanOption } from 'discord.js';
 import { ADD_TO_SERVER_URL, ClientData } from '../../resources/structures';
-import { translate } from 'free-translate';
-import { Locale } from 'free-translate/dist/types/locales';
-import chalk from 'chalk';
+import i18next from 'i18next';
+
+const strings = {
+	commandName: 'cmd.slash.invite.name',
+	commandDescription: 'cmd.slash.invite.description'
+};
 
 export default {
 	commandName: 'invite',
@@ -12,14 +15,14 @@ export default {
 		.setNSFW(false)
 		.setDMPermission(true)
 		.setDefaultMemberPermissions(PermissionFlagsBits.SendMessages)
-		.setName('invite')
-		.setDescription('Adds IBX Translator🌐 to your server!')
+		.setName(i18next.t(strings.commandName, { lng: 'en' }))
+		.setDescription(i18next.t(strings.commandDescription, { lng: 'en' }))
 		.setDescriptionLocalizations({
-			'en-GB': 'Adds IBX Translator🌐 to your server!',
-			'en-US': 'Adds IBX Translator🌐 to your server!',
-			de: 'Fügt IBX Translator🌐 zu Ihrem Server hinzu!',
-			ru: 'Добавляет IBX Translator🌐 на ваш сервер!',
-			"es-ES": '¡Agrega a IBX Translator🌐 a tu servidor!'
+			'en-GB': i18next.t(strings.commandDescription, { lng: 'en-GB' }),
+			'en-US': i18next.t(strings.commandDescription, { lng: 'en-US' }),
+			'de': i18next.t(strings.commandDescription, { lng: 'de' }),
+			'ru': i18next.t(strings.commandDescription, { lng: 'ru' }),
+			"es-ES": i18next.t(strings.commandDescription, { lng: 'es-ES' })
 		}),
 		
 	async execute(client: ClientData, interaction: Interaction) {

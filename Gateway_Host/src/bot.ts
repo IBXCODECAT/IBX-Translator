@@ -25,8 +25,8 @@ const commandFolders = fs.readdirSync(foldersPath);
 i18next
   .use(I18NextFSBackend)
   .init({
-    lng: 'en', // The default language to use
-    fallbackLng: 'en', // Fallback language in case a translation is missing
+    fallbackLng: ['en', 'en-US', 'en-GB', 'ru', 'de', 'es-ES'], // The default language to use
+    //debug: true,
     initImmediate: false, // Set to false to prevent calling the callback function before the translation data is loaded
     backend: {
       loadPath: `${__dirname}\\locales\\{{lng}}.json`, // Path to your translation files
@@ -34,8 +34,8 @@ i18next
   });
 
   console.log(`${__dirname}\\locales\\{{lng}}.json`);
-  
-  const i18next_test = i18next.t('cmd.slash.translate.description', { lng: 'ru'});
+
+  const i18next_test = i18next.t('test', { lng: 'en'});
   console.log(chalk.greenBright(i18next_test));
 
 console.log(chalk.cyanBright(`Found ${commandFolders.length} command folder(s)...`));

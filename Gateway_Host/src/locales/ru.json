@@ -1,10 +1,15 @@
 {
+    "test": "i18Next is working and ready for translations!",
     "cmd": {
         "slash": {
+            "invite": {
+                "title": "приглашать",
+                "description": "Добавляет IBX Translator🌐 на ваш сервер!"
+            },
             "translate": {
                 "title": "Перевести",
                 "description": "Перевести текст на другой язык",
-                "option": {
+                "options": {
                     "content": {
                         "name": "Содержание",
                         "description": "Текст для перевода"

@@ -1,10 +1,14 @@
 {
     "cmd": {
         "slash": {
+            "invite": {
+                "title": "invitar",
+                "description": "¡Agrega a IBX Translator🌐 a tu servidor!"
+            },
             "translate": {
                 "title": "Traducir",
                 "description": "Traducir texto a otro idioma",
-                "option": {
+                "options": {
                     "content": {
                         "name": "Contenido",
                         "description": "El texto a traducir"

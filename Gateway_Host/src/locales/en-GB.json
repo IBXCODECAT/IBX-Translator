@@ -2,6 +2,10 @@
     "test": "i18Next is working and ready for translations!",
     "cmd": {
         "slash": {
+            "invite": {
+                "name": "Invite",
+                "description": "Adds IBX Translator🌐 to your server!"
+            },
             "translate": {
                 "title": "Translate",
                 "description": "Translate text to another language",
