@@ -1,9 +1,7 @@
 import { SlashCommandBuilder, Interaction } from 'discord.js';
-import { ClientData } from '../structures';
+import { ClientData } from '../../structures';
 
-const translate = require('translate-google');
-
-module.exports = {
+export default {
 	commandName: 'translate',
 	cooldown: 15,
 	guilds: null,

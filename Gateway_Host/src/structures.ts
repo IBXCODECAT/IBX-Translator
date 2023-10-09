@@ -1,6 +1,10 @@
 import { Client, Interaction } from 'discord.js';
 
-export const GLOBAL_COMMONJS_FILE_EXTENSION = '.js';
+import chalk from 'chalk';
+
+export const GLOBAL_COMMONJS_FILE_EXTENSION = '.ts';
+
+console.log(chalk.blueBright(`Loading commonjs using extension \'${GLOBAL_COMMONJS_FILE_EXTENSION}\'...`));
 
 export interface ICooldown {
     id: string;

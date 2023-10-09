@@ -1,14 +1,13 @@
 import { Events } from 'discord.js';
 import { ClientData } from '../structures';
+import chalk from 'chalk';
 
-module.exports = {
+export default {
     name: Events.ClientReady,
     once: true,
     execute(client: ClientData) {
-
         if (client.discordClient.user === null) return;
-        if (client.discordClient.shard === null) return;
 
-        console.log(`Ready! Authenticated in as ${client.discordClient.user!.username}`);
+        console.log(chalk.greenBright(`Ready! Authenticated as ${client.discordClient.user!.username}`));
     }
 }

@@ -1,8 +1,9 @@
 import { Events, Collection, Interaction } from 'discord.js';
 import { ClientData, Command } from '../structures';
 
-module.exports = {
+export default {
 	name: Events.InteractionCreate,
+	once: false,
 	async execute(client: ClientData, interaction: Interaction) {
 
 		const { cooldowns } = client;
