@@ -1,11 +1,17 @@
-import { SlashCommandBuilder, Interaction } from 'discord.js';
+import { SlashCommandBuilder, Interaction, PermissionFlagsBits, SlashCommandStringOption, SlashCommandBooleanOption } from 'discord.js';
 import { ClientData } from '../../structures';
+import { translate } from 'free-translate';
+import { Locale } from 'free-translate/dist/types/locales';
+import chalk from 'chalk';
 
 export default {
 	commandName: 'translate',
 	cooldown: 15,
 	guilds: null,
 	data: new SlashCommandBuilder()
+		.setNSFW(false)
+		.setDMPermission(true)
+		.setDefaultMemberPermissions(PermissionFlagsBits.SendMessages)
 		.setName('translate')
 		.setNameLocalizations({
 			"en-GB": 'translate',
@@ -22,15 +28,15 @@ export default {
 			ru: 'переводит сообщение',
 			"es-ES": 'traduce un mensaje'
 		})
-		.addStringOption(option => 
-			option.setName('text-content')
-				/*.setNameLocalizations({
+		.addStringOption((option: SlashCommandStringOption) =>
+			option.setName('content')
+				.setNameLocalizations({
 					"en-GB": 'text-content',
 					"en-US": 'text-content',
 					de: 'Textinhalt',
 					ru: 'текстовое-содержание',
 					"es-ES": 'contenido-del-texto'
-				})*/
+				})
 				.setDescription('Specify the content I should translate.')
 				.setDescriptionLocalizations({
 					"en-GB": 'Specify the content I should translate.',
@@ -40,15 +46,15 @@ export default {
 					"es-ES": 'Especificar el contenido que debo traducir'
 				})
 				.setRequired(true))
-		.addStringOption(option =>
+		.addStringOption((option: SlashCommandStringOption) =>
 			option.setName('language')
-				/*.setNameLocalizations({
+				.setNameLocalizations({
 					"en-GB": 'language',
 					'en-US': 'language',
 					de: 'Sprache',
 					ru: 'язык',
 					"es-ES": 'idioma'
-				})*/
+				})
 				.setDescription('Specify the language I should translate the content to.')
 				.setDescriptionLocalizations({
 					"en-GB": 'Specify the language I should translate the content to.',
@@ -61,12 +67,12 @@ export default {
 				.addChoices(
 					{ name: 'English (British)', value: 'en-GB' },
 					{ name: 'English (United States)', value: 'en-US' },
-					{ name: 'Deutsch', value: 'de'},
+					{ name: 'Deutsch', value: 'de' },
 					{ name: 'РУССКИЙ', value: 'ru' },
 					{ name: 'Español', value: 'es-ES' },
 				))
-		.addBooleanOption(option =>
-			option.setName('public'))
+		.addBooleanOption((option: SlashCommandBooleanOption) =>
+			option.setName('public')
 				.setNameLocalizations({
 					"en-GB": 'public',
 					"en-US": 'public',
@@ -74,27 +80,45 @@ export default {
 					ru: 'публичный',
 					"es-ES": 'público'
 				})
-				.setDescription('Specify if this message should be sent in this channel.')
-				.setDescriptionLocalizations({
-					"en-GB": 'Specify if this message should be sent in this channel.',
-					"en-US": 'Specify if this message should be sent in this channel.',
-					de: 'Geben Sie an, ob diese Nachricht in diesem Kanal gesendet werden soll',
-					ru: 'Укажите, должно ли это сообщение быть отправлено в этом канале',
-					"es-ES": 'Especificar si este mensaje debe ser enviado en este canal'
-				}),
+				.setDescription('Specify if this message should be sent to everyone in this channel.')),
 
 	async execute(client: ClientData, interaction: Interaction) {
 
-		if(!interaction.isChatInputCommand()) return;
+		if (!interaction.isChatInputCommand()) return;
 
 		await interaction.deferReply({ ephemeral: true });
-		
-		const transObj = {
-			d: [true, 'true', interaction.options.getString('text-content')],
+
+		try {
+			const content = interaction.options.getString('content');
+			const selectedLanguage = interaction.options.getString('language');
+
+			if (content == null) {
+				interaction.editReply({ content: 'You must specify the content I should translate!' });
+				return;
+			}
+			else {
+				if (selectedLanguage == null) {
+					interaction.editReply({ content: 'You must specify the language I should translate the content to!' });
+					return;
+				}
+			}
+
+			console.log(content!, interaction.locale!, selectedLanguage!);
+
+			await interaction.editReply({ content: `Translating from ${interaction.locale!} to ${selectedLanguage}` });
+
+			const result = await translate(
+				content!,
+				{
+					from: interaction.locale as Locale,
+					to: selectedLanguage as Locale
+				}
+			);
+
+			await interaction.followUp({ content: `${interaction.user} says ${result}` });
+		} catch (err: any) {
+			console.error(chalk.redBright(err.stack));
+			await interaction.editReply({ content: `There was an error while executing this command!` });
 		}
-
-		const selectedLanguage = interaction.options.getString('language');
-
-		await interaction.editReply({ content: `Translating to ${selectedLanguage}...` });
 	},
 };
