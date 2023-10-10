@@ -7,22 +7,34 @@ import chalk from 'chalk';
 import i18next from 'i18next';
 
 const strings = {
-	commandName: 'cmd.slash.translate.name',
+	commandName: 'cmd.slash.translate.title',
 	commandDescription: 'cmd.slash.translate.description',
 	contentFieldName: 'cmd.slash.translate.options.content.name',
 	contentFieldDescription: 'cmd.slash.translate.options.content.description',
+	languageFieldName: 'cmd.slash.translate.options.language.name',
+	languageFieldDescription: 'cmd.slash.translate.options.language.description',
+	publicFieldName: 'cmd.slash.translate.options.public.name',
+	publicFieldDescription: 'cmd.slash.translate.options.public.description'
 };
 
+const DISCORD_REF_NAME = 'translate';
 
 export default {
+	commandName: DISCORD_REF_NAME,
 	cooldown: 15,
 	guilds: null,
 	data: new SlashCommandBuilder()
 		.setDefaultMemberPermissions(PermissionFlagsBits.SendMessages)
 		.setDMPermission(true)
 		.setNSFW(false)
-
-		.setName(i18next.t(strings.commandName, { lng: 'en' }))
+		.setName(DISCORD_REF_NAME)
+		.setNameLocalizations({
+			'en-GB': i18next.t(strings.commandName, { lng: 'en-GB' }),
+			'en-US': i18next.t(strings.commandName, { lng: 'en-US' }),
+			'ru': i18next.t(strings.commandName, { lng: 'ru' }),
+			'de': i18next.t(strings.commandName, { lng: 'de' }),
+			"es-ES": i18next.t(strings.commandName, { lng: 'es-ES' })
+		})
 		.setDescription(i18next.t(strings.commandDescription, { lng: 'en' }))
 		.setDescriptionLocalizations({
 			'en-GB': i18next.t(strings.commandDescription, { lng: 'en-GB' }),
@@ -50,22 +62,22 @@ export default {
 			"es-ES": i18next.t(strings.contentFieldDescription, { lng: 'es-ES' })
 		})
 		.addStringOption((option: SlashCommandStringOption) =>
-			option.setName(i18next.t('cmd.slash.translate.options.language.name', { lng: 'en' }))
-				.setDescription(i18next.t('cmd.slash.translate.options.language.description', { lng: 'en' }))
+			option.setName(i18next.t(strings.languageFieldName, { lng: 'en' }))
+				.setDescription(i18next.t(strings.languageFieldDescription, { lng: 'en' }))
 				.setRequired(true)
 				.setNameLocalizations({
-					'en-GB': i18next.t('cmd.slash.translate.options.language.name', { lng: 'en-GB' }),
-					'en-US': i18next.t('cmd.slash.translate.options.language.name', { lng: 'en-US' }),
-					'ru': i18next.t('cmd.slash.translate.options.language.name', { lng: 'ru' }),
-					'de': i18next.t('cmd.slash.translate.options.language.name', { lng: 'de' }),
-					"es-ES": i18next.t('cmd.slash.translate.options.language.name', { lng: 'es-ES' })
+					'en-GB': i18next.t(strings.languageFieldName, { lng: 'en-GB' }),
+					'en-US': i18next.t(strings.languageFieldName, { lng: 'en-US' }),
+					'ru': i18next.t(strings.languageFieldName, { lng: 'ru' }),
+					'de': i18next.t(strings.languageFieldName, { lng: 'de' }),
+					"es-ES": i18next.t(strings.languageFieldName, { lng: 'es-ES' })
 				})
 				.setDescriptionLocalizations({
-					'en-GB': i18next.t('cmd.slash.translate.options.language.description', { lng: 'en-GB' }),
-					'en-US': i18next.t('cmd.slash.translate.options.language.description', { lng: 'en-US' }),
-					'ru': i18next.t('cmd.slash.translate.options.language.description', { lng: 'ru' }),
-					'de': i18next.t('cmd.slash.translate.options.language.description', { lng: 'de' }),
-					"es-ES": i18next.t('cmd.slash.translate.options.language.description', { lng: 'es-ES' })
+					'en-GB': i18next.t(strings.languageFieldDescription, { lng: 'en-GB' }),
+					'en-US': i18next.t(strings.languageFieldDescription, { lng: 'en-US' }),
+					'ru': i18next.t(strings.languageFieldDescription, { lng: 'ru' }),
+					'de': i18next.t(strings.languageFieldDescription, { lng: 'de' }),
+					"es-ES": i18next.t(strings.languageFieldDescription, { lng: 'es-ES' })
 				})
 				.addChoices(
 					{ name: 'Deutsch', value: 'de' },
@@ -75,22 +87,22 @@ export default {
 					{ name: 'Русский', value: 'ru' },
 				))
 		.addBooleanOption((option: SlashCommandBooleanOption) =>
-			option.setName(i18next.t('cmd.slash.translate.options.public.name', { lng: 'en' }))
-				.setDescription(i18next.t('cmd.slash.translate.options.public.description', { lng: 'en' }))
+			option.setName(i18next.t(strings.publicFieldName, { lng: 'en' }))
+				.setDescription(i18next.t(strings.publicFieldDescription, { lng: 'en' }))
 				.setRequired(false)
 				.setNameLocalizations({
-					'en-GB': i18next.t('cmd.slash.translate.options.public.name', { lng: 'en-GB' }),
-					'en-US': i18next.t('cmd.slash.translate.options.public.name', { lng: 'en-US' }),
-					'ru': i18next.t('cmd.slash.translate.options.public.name', { lng: 'ru' }),
-					'de': i18next.t('cmd.slash.translate.options.public.name', { lng: 'de' }),
-					"es-ES": i18next.t('cmd.slash.translate.options.public.name', { lng: 'es-ES' })
+					'en-GB': i18next.t(strings.publicFieldName, { lng: 'en-GB' }),
+					'en-US': i18next.t(strings.publicFieldName, { lng: 'en-US' }),
+					'ru': i18next.t(strings.publicFieldName, { lng: 'ru' }),
+					'de': i18next.t(strings.publicFieldName, { lng: 'de' }),
+					"es-ES": i18next.t(strings.publicFieldName, { lng: 'es-ES' })
 				})
 				.setDescriptionLocalizations({
-					'en-GB': i18next.t('cmd.slash.translate.options.public.description', { lng: 'en-GB' }),
-					'en-US': i18next.t('cmd.slash.translate.options.public.description', { lng: 'en-US' }),
-					'ru': i18next.t('cmd.slash.translate.options.public.description', { lng: 'ru' }),
-					'de': i18next.t('cmd.slash.translate.options.public.description', { lng: 'de' }),
-					"es-ES": i18next.t('cmd.slash.translate.options.public.description', { lng: 'es-ES' })
+					'en-GB': i18next.t(strings.publicFieldDescription, { lng: 'en-GB' }),
+					'en-US': i18next.t(strings.publicFieldDescription, { lng: 'en-US' }),
+					'ru': i18next.t(strings.publicFieldDescription, { lng: 'ru' }),
+					'de': i18next.t(strings.publicFieldDescription, { lng: 'de' }),
+					"es-ES": i18next.t(strings.publicFieldDescription, { lng: 'es-ES' })
 				})),
 
 

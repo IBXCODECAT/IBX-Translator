@@ -9,6 +9,7 @@ import chalk from 'chalk';
 import { SlashCommandBuilder } from 'discord.js';
 import i18next from 'i18next';
 import I18NextFSBackend from 'i18next-fs-backend';
+import { GLOBAL_COMMONJS_FILE_EXTENSION } from './resources/structures';
 
 const clientId = process.env.CLIENT_ID;
 const token = process.env.DISCORD_BOT_TOKEN;
@@ -50,17 +51,16 @@ const commandFolders = fs.readdirSync(foldersPath);
 for (const folder of commandFolders) {
 	// Grab all the command files from the commands directory you created earlier
 	const commandsPath = path.join(foldersPath, folder);
-	const commandFiles = fs.readdirSync(commandsPath).filter((file: string) => file.endsWith('.ts'));
+	const commandFiles = fs.readdirSync(commandsPath).filter((file: string) => file.endsWith(GLOBAL_COMMONJS_FILE_EXTENSION));
 	// Grab the SlashCommandBuilder#toJSON() output of each command's data for deployment
 	for (const file of commandFiles) {
 		const filePath = path.join(commandsPath, file);
 		const m_command = require(filePath);
 		const command = m_command.default;
 
-		console.log(JSON.stringify(command.data, null, 2));
+		console.log(command.data);
 
 		if ('data' in command && 'execute' in command) {
-			console.log((command.data as SlashCommandBuilder));
 			commands.push((command.data as SlashCommandBuilder).toJSON());
 			
 		} else {

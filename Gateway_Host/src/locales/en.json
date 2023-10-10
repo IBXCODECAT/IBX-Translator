@@ -1,25 +1,24 @@
 {
-    "test": "i18Next is working and ready for",
     "cmd": {
         "slash": {
             "invite": {
-                "name": "Invite",
+                "name": "invite",
                 "description": "Adds IBX Translator🌐 to your server!"
             },
             "translate": {
-                "title": "Translate",
+                "title": "translate",
                 "description": "Translate text to another language",
                 "options": {
                     "content": {
-                        "name": "Content",
+                        "name": "content",
                         "description": "The text to translate"
                     },
                     "language": {
-                        "name": "Language",
+                        "name": "language",
                         "description": "The language to translate to"
                     },
                     "public": {
-                        "name": "Public",
+                        "name": "public",
                         "description": "Wether or not I should post this translation as a message"
                     }
                 }

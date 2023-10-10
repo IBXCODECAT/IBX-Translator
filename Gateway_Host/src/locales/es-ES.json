@@ -6,19 +6,19 @@
                 "description": "¡Agrega a IBX Translator🌐 a tu servidor!"
             },
             "translate": {
-                "title": "Traducir",
+                "title": "traducir",
                 "description": "Traducir texto a otro idioma",
                 "options": {
                     "content": {
-                        "name": "Contenido",
+                        "name": "contenido",
                         "description": "El texto a traducir"
                     },
                     "language": {
-                        "name": "Idioma",
+                        "name": "idioma",
                         "description": "El idioma al que traducir"
                     },
                     "public": {
-                        "name": "Público",
+                        "name": "público",
                         "description": "Si debo o no publicar esta traducción como un mensaje"
                     }
                 }

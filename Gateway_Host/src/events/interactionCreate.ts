@@ -14,6 +14,10 @@ export default {
 			let commandResolved: boolean = false;
 
 			client.commands.forEach((cmd) => {
+
+				console.log(cmd.commandName);
+				//console.log(interaction.commandName);
+
 				if(cmd.commandName === interaction.commandName)
 				{
 					command = cmd;

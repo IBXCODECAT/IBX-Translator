@@ -1,5 +1,4 @@
 {
-    "test": "test",
     "cmd": {
         "slash": {
             "invite": {
@@ -7,19 +6,19 @@
                 "description": "Fügt IBX Translator🌐 zu Ihrem Server hinzu!"
             },
             "translate": {
-                "title": "Übersetzen",
+                "title": "übersetzen",
                 "description": "Übersetzen Sie Text in eine andere Sprache",
                 "options": {
                     "content": {
-                        "name": "Inhalt",
+                        "name": "inhalt",
                         "description": "Der zu übersetzende Text"
                     },
                     "language": {
-                        "name": "Sprache",
+                        "name": "sprache",
                         "description": "Die Sprache, in die übersetzt werden soll"
                     },
                     "public": {
-                        "name": "Öffentlich",
+                        "name": "öffentlich",
                         "description": "Soll ich diese Übersetzung als Chat-Nachricht posten"
                     }
                 }
