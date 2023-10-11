@@ -10,7 +10,7 @@ import {
 import { ClientData } from "../../resources/structures";
 
 import i18next from "i18next";
-import { GetLanguageSelectionComponents } from "../../components/language-select";
+import { GetLanguageSelectionComponents } from "../../components/Selects/language-select";
 
 import { strings } from '../../locales/locales';
 
@@ -35,15 +35,13 @@ export default {
 
     async execute(client: ClientData, interaction: MessageContextMenuCommandInteraction) {
 
+        if(!interaction.isMessageContextMenuCommand()) return;
+
         await interaction.deferReply({ ephemeral: true });
 
         try {
             await interaction.editReply({
-                content: i18next.t(strings.translateThisLangaugeSelectPrompt,
-                    {
-                        lng: interaction.locale
-                    }
-                ),
+                content: interaction.targetMessage.content,
                 components: [await GetLanguageSelectionComponents(interaction)]
             });
 

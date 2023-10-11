@@ -1,12 +1,11 @@
 import { SlashCommandBuilder, Interaction, PermissionFlagsBits, SlashCommandStringOption, SlashCommandBooleanOption } from 'discord.js';
 import { ClientData } from '../../resources/structures';
-import { translate } from 'free-translate';
-import { Locale } from 'free-translate/dist/types/locales';
-import chalk from 'chalk';
 
 import i18next from 'i18next';
 
 import { strings } from '../../locales/locales';
+import Translate from '../../functions/translate';
+import chalk from 'chalk';
 
 const DISCORD_REF_NAME = 'translate';
 
@@ -120,13 +119,7 @@ export default {
 
 			console.log(content!, interaction.locale!, selectedLanguage!);
 
-			const result = await translate(
-				content!,
-				{
-					from: interaction.locale as Locale,
-					to: selectedLanguage as Locale
-				}
-			);
+			const result = await Translate(content!, interaction.locale!, selectedLanguage!);
 
 			await interaction.editReply({ content: `${result}` });
 

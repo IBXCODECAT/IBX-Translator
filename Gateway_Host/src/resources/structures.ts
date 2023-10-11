@@ -1,4 +1,4 @@
-import { Client, Interaction } from 'discord.js';
+import { Client, Interaction, MessageComponentInteraction } from 'discord.js';
 import path from 'path';
 import chalk from 'chalk';
 
@@ -83,31 +83,41 @@ export class Command implements ICommand {
     }
 }
 
+export interface IInteractionComponent {
+    componentId: string;
+    interaction: MessageComponentInteraction | undefined;
+    execute(client: ClientData, interaction: Interaction): void;
+}
+
+export class InteractionComponent implements IInteractionComponent {
+    public componentId: IInteractionComponent["componentId"];
+    public interaction: IInteractionComponent["interaction"] | undefined;
+    public execute: IInteractionComponent["execute"];
+
+    constructor(componentId: IInteractionComponent["componentId"], interaction: IInteractionComponent["interaction"] | undefined, execute: IInteractionComponent["execute"]) {
+        this.componentId = componentId;
+        this.interaction = interaction;
+        this.execute = execute;
+    }
+}
+
 export interface IClientData {
     discordClient: Client;
     commands: Command[];
-    cooldowns: Cooldown[]
-
-    setCooldown(): void
-    setCommand(): void
+    components: InteractionComponent[];
+    cooldowns: Cooldown[];
 }
 
 export class ClientData {
     public discordClient: IClientData["discordClient"];
     public commands: IClientData["commands"];
+    public components: IClientData["components"];
     public cooldowns: IClientData["cooldowns"];
 
-    constructor(discordClient: IClientData["discordClient"], commands: IClientData["commands"], cooldowns: IClientData["cooldowns"]) {
+    constructor(discordClient: IClientData["discordClient"], commands: IClientData["commands"], components: IClientData["components"], cooldowns: IClientData["cooldowns"]) {
         this.discordClient = discordClient;
         this.commands = commands;
+        this.components = components;
         this.cooldowns = cooldowns;
-    }
-
-    setCooldown(cooldown: Cooldown) {
-        this.cooldowns.push(cooldown);
-    }
-
-    setCommand(command: Command) {
-        this.commands.push(command);
     }
 }
