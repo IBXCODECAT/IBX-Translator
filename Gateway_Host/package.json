@@ -9,9 +9,10 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "deploy": "ts-node ./src/deploy.ts",
     "dev": "nodemon",
     "build": "tsc -P .",
-    "start": "node dist\\bot.js"
+    "start": "forever dist\\bot.js"
   },
   "author": "",
   "license": "ISC",
@@ -19,6 +20,7 @@
     "chalk": "^4.1.2",
     "discord.js": "^14.11.0",
     "dotenv": "^16.3.1",
+    "forever": "^4.0.3",
     "free-translate": "^0.6.1",
     "google-translate-api": "^2.3.0",
     "i18next": "^23.5.1",

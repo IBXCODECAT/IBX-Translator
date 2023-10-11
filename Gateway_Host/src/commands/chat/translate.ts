@@ -6,16 +6,7 @@ import chalk from 'chalk';
 
 import i18next from 'i18next';
 
-const strings = {
-	commandName: 'cmd.slash.translate.title',
-	commandDescription: 'cmd.slash.translate.description',
-	contentFieldName: 'cmd.slash.translate.options.content.name',
-	contentFieldDescription: 'cmd.slash.translate.options.content.description',
-	languageFieldName: 'cmd.slash.translate.options.language.name',
-	languageFieldDescription: 'cmd.slash.translate.options.language.description',
-	publicFieldName: 'cmd.slash.translate.options.public.name',
-	publicFieldDescription: 'cmd.slash.translate.options.public.description'
-};
+import { strings } from '../../locales/locales';
 
 const DISCORD_REF_NAME = 'translate';
 
@@ -29,55 +20,55 @@ export default {
 		.setNSFW(false)
 		.setName(DISCORD_REF_NAME)
 		.setNameLocalizations({
-			'en-GB': i18next.t(strings.commandName, { lng: 'en-GB' }),
-			'en-US': i18next.t(strings.commandName, { lng: 'en-US' }),
-			'ru': i18next.t(strings.commandName, { lng: 'ru' }),
-			'de': i18next.t(strings.commandName, { lng: 'de' }),
-			"es-ES": i18next.t(strings.commandName, { lng: 'es-ES' })
+			'en-GB': i18next.t(strings.translateCommandName, { lng: 'en-GB' }),
+			'en-US': i18next.t(strings.translateCommandName, { lng: 'en-US' }),
+			'ru': i18next.t(strings.translateCommandName, { lng: 'ru' }),
+			'de': i18next.t(strings.translateCommandName, { lng: 'de' }),
+			"es-ES": i18next.t(strings.translateCommandName, { lng: 'es-ES' })
 		})
-		.setDescription(i18next.t(strings.commandDescription, { lng: 'en' }))
+		.setDescription(i18next.t(strings.translateCommandDescription, { lng: 'en' }))
 		.setDescriptionLocalizations({
-			'en-GB': i18next.t(strings.commandDescription, { lng: 'en-GB' }),
-			'en-US': i18next.t(strings.commandDescription, { lng: 'en-US' }),
-			'ru': i18next.t(strings.commandDescription, { lng: 'ru' }),
-			'de': i18next.t(strings.commandDescription, { lng: 'de' }),
-			"es-ES": i18next.t(strings.commandDescription, { lng: 'es-ES' })
+			'en-GB': i18next.t(strings.translateCommandDescription, { lng: 'en-GB' }),
+			'en-US': i18next.t(strings.translateCommandDescription, { lng: 'en-US' }),
+			'ru': i18next.t(strings.translateCommandDescription, { lng: 'ru' }),
+			'de': i18next.t(strings.translateCommandDescription, { lng: 'de' }),
+			"es-ES": i18next.t(strings.translateCommandDescription, { lng: 'es-ES' })
 		})
 		.addStringOption((option: SlashCommandStringOption) =>
-			option.setName(i18next.t(strings.contentFieldName, { lng: 'en' }))
-				.setDescription(i18next.t(strings.contentFieldDescription, { lng: 'en' }))
+			option.setName(i18next.t(strings.translateContentFieldName, { lng: 'en' }))
+				.setDescription(i18next.t(strings.translateContentFieldDescription, { lng: 'en' }))
 				.setRequired(true)
 				.setNameLocalizations({
-					'en-GB': i18next.t(strings.contentFieldName, { lng: 'en-GB' }),
-					'en-US': i18next.t(strings.contentFieldName, { lng: 'en-US' }),
-					'ru': i18next.t(strings.contentFieldName, { lng: 'ru' }),
-					'de': i18next.t(strings.contentFieldName, { lng: 'de' }),
-					"es-ES": i18next.t(strings.contentFieldName, { lng: 'es-ES' })
+					'en-GB': i18next.t(strings.translateContentFieldName, { lng: 'en-GB' }),
+					'en-US': i18next.t(strings.translateContentFieldName, { lng: 'en-US' }),
+					'ru': i18next.t(strings.translateContentFieldName, { lng: 'ru' }),
+					'de': i18next.t(strings.translateContentFieldName, { lng: 'de' }),
+					"es-ES": i18next.t(strings.translateContentFieldName, { lng: 'es-ES' })
 				}))
 		.setDescriptionLocalizations({
-			'en-GB': i18next.t(strings.contentFieldDescription, { lng: 'en-GB' }),
-			'en-US': i18next.t(strings.contentFieldDescription, { lng: 'en-US' }),
-			'ru': i18next.t(strings.contentFieldDescription, { lng: 'ru' }),
-			'de': i18next.t(strings.contentFieldDescription, { lng: 'de' }),
-			"es-ES": i18next.t(strings.contentFieldDescription, { lng: 'es-ES' })
+			'en-GB': i18next.t(strings.translateContentFieldDescription, { lng: 'en-GB' }),
+			'en-US': i18next.t(strings.translateContentFieldDescription, { lng: 'en-US' }),
+			'ru': i18next.t(strings.translateContentFieldDescription, { lng: 'ru' }),
+			'de': i18next.t(strings.translateContentFieldDescription, { lng: 'de' }),
+			"es-ES": i18next.t(strings.translateContentFieldDescription, { lng: 'es-ES' })
 		})
 		.addStringOption((option: SlashCommandStringOption) =>
-			option.setName(i18next.t(strings.languageFieldName, { lng: 'en' }))
-				.setDescription(i18next.t(strings.languageFieldDescription, { lng: 'en' }))
+			option.setName(i18next.t(strings.translateLanguageFieldName, { lng: 'en' }))
+				.setDescription(i18next.t(strings.translateLanguageFieldDescription, { lng: 'en' }))
 				.setRequired(true)
 				.setNameLocalizations({
-					'en-GB': i18next.t(strings.languageFieldName, { lng: 'en-GB' }),
-					'en-US': i18next.t(strings.languageFieldName, { lng: 'en-US' }),
-					'ru': i18next.t(strings.languageFieldName, { lng: 'ru' }),
-					'de': i18next.t(strings.languageFieldName, { lng: 'de' }),
-					"es-ES": i18next.t(strings.languageFieldName, { lng: 'es-ES' })
+					'en-GB': i18next.t(strings.translateLanguageFieldName, { lng: 'en-GB' }),
+					'en-US': i18next.t(strings.translateLanguageFieldName, { lng: 'en-US' }),
+					'ru': i18next.t(strings.translateLanguageFieldName, { lng: 'ru' }),
+					'de': i18next.t(strings.translateLanguageFieldName, { lng: 'de' }),
+					"es-ES": i18next.t(strings.translateLanguageFieldName, { lng: 'es-ES' })
 				})
 				.setDescriptionLocalizations({
-					'en-GB': i18next.t(strings.languageFieldDescription, { lng: 'en-GB' }),
-					'en-US': i18next.t(strings.languageFieldDescription, { lng: 'en-US' }),
-					'ru': i18next.t(strings.languageFieldDescription, { lng: 'ru' }),
-					'de': i18next.t(strings.languageFieldDescription, { lng: 'de' }),
-					"es-ES": i18next.t(strings.languageFieldDescription, { lng: 'es-ES' })
+					'en-GB': i18next.t(strings.translateLanguageFieldDescription, { lng: 'en-GB' }),
+					'en-US': i18next.t(strings.translateLanguageFieldDescription, { lng: 'en-US' }),
+					'ru': i18next.t(strings.translateLanguageFieldDescription, { lng: 'ru' }),
+					'de': i18next.t(strings.translateLanguageFieldDescription, { lng: 'de' }),
+					"es-ES": i18next.t(strings.translateLanguageFieldDescription, { lng: 'es-ES' })
 				})
 				.addChoices(
 					{ name: 'Deutsch', value: 'de' },
@@ -87,61 +78,61 @@ export default {
 					{ name: 'Русский', value: 'ru' },
 				))
 		.addBooleanOption((option: SlashCommandBooleanOption) =>
-			option.setName(i18next.t(strings.publicFieldName, { lng: 'en' }))
-				.setDescription(i18next.t(strings.publicFieldDescription, { lng: 'en' }))
+			option.setName(i18next.t(strings.translatePublicFieldName, { lng: 'en' }))
+				.setDescription(i18next.t(strings.translatePublicFieldDescription, { lng: 'en' }))
 				.setRequired(false)
 				.setNameLocalizations({
-					'en-GB': i18next.t(strings.publicFieldName, { lng: 'en-GB' }),
-					'en-US': i18next.t(strings.publicFieldName, { lng: 'en-US' }),
-					'ru': i18next.t(strings.publicFieldName, { lng: 'ru' }),
-					'de': i18next.t(strings.publicFieldName, { lng: 'de' }),
-					"es-ES": i18next.t(strings.publicFieldName, { lng: 'es-ES' })
+					'en-GB': i18next.t(strings.translatePublicFieldName, { lng: 'en-GB' }),
+					'en-US': i18next.t(strings.translatePublicFieldName, { lng: 'en-US' }),
+					'ru': i18next.t(strings.translatePublicFieldName, { lng: 'ru' }),
+					'de': i18next.t(strings.translatePublicFieldName, { lng: 'de' }),
+					"es-ES": i18next.t(strings.translatePublicFieldName, { lng: 'es-ES' })
 				})
 				.setDescriptionLocalizations({
-					'en-GB': i18next.t(strings.publicFieldDescription, { lng: 'en-GB' }),
-					'en-US': i18next.t(strings.publicFieldDescription, { lng: 'en-US' }),
-					'ru': i18next.t(strings.publicFieldDescription, { lng: 'ru' }),
-					'de': i18next.t(strings.publicFieldDescription, { lng: 'de' }),
-					"es-ES": i18next.t(strings.publicFieldDescription, { lng: 'es-ES' })
+					'en-GB': i18next.t(strings.translatePublicFieldDescription, { lng: 'en-GB' }),
+					'en-US': i18next.t(strings.translatePublicFieldDescription, { lng: 'en-US' }),
+					'ru': i18next.t(strings.translatePublicFieldDescription, { lng: 'ru' }),
+					'de': i18next.t(strings.translatePublicFieldDescription, { lng: 'de' }),
+					"es-ES": i18next.t(strings.translatePublicFieldDescription, { lng: 'es-ES' })
 				})),
 
 
-			async execute(client: ClientData, interaction: Interaction) {
+	async execute(client: ClientData, interaction: Interaction) {
 
-			if(!interaction.isChatInputCommand()) return;
+		if (!interaction.isChatInputCommand()) return;
 
-	await interaction.deferReply({ ephemeral: !interaction.options.getBoolean('public') ?? false });
+		await interaction.deferReply({ ephemeral: !interaction.options.getBoolean('public') ?? false });
 
-	try {
-		const content = interaction.options.getString('content');
-		const selectedLanguage = interaction.options.getString('language');
+		try {
+			const content = interaction.options.getString('content');
+			const selectedLanguage = interaction.options.getString('language');
 
-		if(content == null) {
-	interaction.editReply({ content: 'You must specify the content I should translate!' });
-	return;
-}
+			if (content == null) {
+				interaction.editReply({ content: 'You must specify the content I should translate!' });
+				return;
+			}
 			else {
-	if (selectedLanguage == null) {
-		interaction.editReply({ content: 'You must specify the language I should translate the content to!' });
-		return;
-	}
-}
+				if (selectedLanguage == null) {
+					interaction.editReply({ content: 'You must specify the language I should translate the content to!' });
+					return;
+				}
+			}
 
-console.log(content!, interaction.locale!, selectedLanguage!);
+			console.log(content!, interaction.locale!, selectedLanguage!);
 
-const result = await translate(
-	content!,
-	{
-		from: interaction.locale as Locale,
-		to: selectedLanguage as Locale
-	}
-);
+			const result = await translate(
+				content!,
+				{
+					from: interaction.locale as Locale,
+					to: selectedLanguage as Locale
+				}
+			);
 
-await interaction.editReply({ content: `${result}` });
+			await interaction.editReply({ content: `${result}` });
 
 		} catch (err: any) {
-	console.error(chalk.redBright(err.stack));
-	await interaction.editReply({ content: `There was an error while executing this command!` });
-}
+			console.error(chalk.redBright(err.stack));
+			await interaction.editReply({ content: `There was an error while executing this command!` });
+		}
 	},
 };

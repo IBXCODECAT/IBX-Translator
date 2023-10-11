@@ -1,8 +1,22 @@
 {
+    "lang": {
+        "german": "Deutsch",
+        "english_gb": "Englisch (Großbritannien)",
+        "english_us": "Englisch (USA)",
+        "spanish": "Spanisch",
+        "russian": "Russisch"
+    },
     "cmd": {
+        "context": {
+            "translate-this": {
+                "title": "Übersetze Das!",
+                "prompt": "Bitte wählen Sie unten eine Sprache aus!",
+                "placeholder": "Sprache Auswählen"
+            }
+        },
         "slash": {
             "invite": {
-                "name": "einladen",
+                "title": "einladen",
                 "description": "Fügt IBX Translator🌐 zu Ihrem Server hinzu!"
             },
             "translate": {

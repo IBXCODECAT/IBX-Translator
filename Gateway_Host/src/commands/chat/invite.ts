@@ -2,10 +2,7 @@ import { SlashCommandBuilder, Interaction, PermissionFlagsBits, SlashCommandStri
 import { ADD_TO_SERVER_URL, ClientData } from '../../resources/structures';
 import i18next from 'i18next';
 
-const strings = {
-	commandName: 'cmd.slash.invite.title',
-	commandDescription: 'cmd.slash.invite.description'
-};
+import { strings } from '../../locales/locales';
 
 const DISCORD_REF_NAME = 'invite';
 
@@ -19,19 +16,19 @@ export default {
 		.setNSFW(false)
 		.setName(DISCORD_REF_NAME)
 		.setNameLocalizations({
-			'en-GB': i18next.t(strings.commandName, { lng: 'en-GB' }),
-			'en-US': i18next.t(strings.commandName, { lng: 'en-US' }),
-			'ru': i18next.t(strings.commandName, { lng: 'ru' }),
-			'de': i18next.t(strings.commandName, { lng: 'de' }),
-			"es-ES": i18next.t(strings.commandName, { lng: 'es-ES' })
+			'en-GB': i18next.t(strings.inviteCommandName, { lng: 'en-GB' }),
+			'en-US': i18next.t(strings.inviteCommandName, { lng: 'en-US' }),
+			'ru': i18next.t(strings.inviteCommandName, { lng: 'ru' }),
+			'de': i18next.t(strings.inviteCommandName, { lng: 'de' }),
+			"es-ES": i18next.t(strings.inviteCommandName, { lng: 'es-ES' })
 		})
-		.setDescription(i18next.t(strings.commandDescription, { lng: 'en' }))
+		.setDescription(i18next.t(strings.inviteCommandDescription, { lng: 'en' }))
 		.setDescriptionLocalizations({
-			'en-GB': i18next.t(strings.commandDescription, { lng: 'en-GB' }),
-			'en-US': i18next.t(strings.commandDescription, { lng: 'en-US' }),
-			'ru': i18next.t(strings.commandDescription, { lng: 'ru' }),
-			'de': i18next.t(strings.commandDescription, { lng: 'de' }),
-			"es-ES": i18next.t(strings.commandDescription, { lng: 'es-ES' })
+			'en-GB': i18next.t(strings.inviteCommandDescription, { lng: 'en-GB' }),
+			'en-US': i18next.t(strings.inviteCommandDescription, { lng: 'en-US' }),
+			'ru': i18next.t(strings.inviteCommandDescription, { lng: 'ru' }),
+			'de': i18next.t(strings.inviteCommandDescription, { lng: 'de' }),
+			"es-ES": i18next.t(strings.inviteCommandDescription, { lng: 'es-ES' })
 		}),
 		
 	async execute(client: ClientData, interaction: Interaction) {

@@ -1,5 +1,19 @@
 {
+    "lang": {
+        "german": "Alemán",
+        "english_gb": "Inglés (Gran Bretaña)",
+        "english_us": "Inglés Estados Unidos)",
+        "spanish": "Español",
+        "russian": "Ruso"
+    },
     "cmd": {
+        "context": {
+            "translate-this": {
+                "title": "¡Traduce Esto!",
+                "prompt": "Por favor elija un idioma a continuación",
+                "placeholder": "Selecciona un Idioma"
+            }
+        },
         "slash": {
             "invite": {
                 "title": "invitar",

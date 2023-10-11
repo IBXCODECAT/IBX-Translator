@@ -1,8 +1,22 @@
 {
+    "lang": {
+        "german": "German",
+        "english_gb": "English (Great Britain)",
+        "english_us": "English (United States)",
+        "spanish": "Spanish",
+        "russian": "Russian"
+    },
     "cmd": {
+        "context": {
+            "translate-this": {
+                "title": "Translate This!",
+                "prompt": "Please select a language below.",
+                "placeholder": "Select a Language"
+            }
+        },
         "slash": {
             "invite": {
-                "name": "invite",
+                "title": "invite",
                 "description": "Adds IBX Translator🌐 to your server!"
             },
             "translate": {

@@ -8,38 +8,39 @@ export default {
 
 		const { cooldowns } = client;
 
-		if(interaction.isChatInputCommand())
-		{
-			let command: any;
-			let commandResolved: boolean = false;
+		if(!interaction.isCommand()) return;
 
-			client.commands.forEach((cmd) => {
+		let command: any;
+		let commandResolved: boolean = false;
 
-				console.log(cmd.commandName);
-				//console.log(interaction.commandName);
+		client.commands.forEach((cmd) => {
 
-				if(cmd.commandName === interaction.commandName)
-				{
-					command = cmd;
-					commandResolved = true;
-				}
-			});
+			console.log(cmd.commandName);
+			//console.log(interaction.commandName);
 
-			if(!commandResolved) return;
-			
-			console.log(command);
-
-			try {
-				await command.execute(client, interaction);
-			} catch (error) {
-				console.error(error);
-				await interaction.reply({ content: 'There was an error while executing this command!', ephemeral: true });
+			if (cmd.commandName === interaction.commandName) {
+				command = cmd;
+				commandResolved = true;
 			}
+		});
 
+		console.log(command.commandName);
+
+		if (!commandResolved) return;
+
+		console.log('Command resolved!');
+				
+		try {
+			await command.execute(client, interaction);
+		} catch (error) {
+			console.error(error);
+			await interaction.reply({ content: 'There was an error while executing this command!', ephemeral: true });
 		}
 
 
-		
+
+
+
 
 
 		/*
@@ -64,6 +65,6 @@ export default {
 		timestamps.set(interaction.user.id, now);
 		setTimeout(() => timestamps.delete(interaction.user.id), cooldownAmount);
 		*/
-		
+
 	},
 };
