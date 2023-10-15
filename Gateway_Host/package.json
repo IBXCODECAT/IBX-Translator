@@ -12,7 +12,8 @@
     "deploy": "ts-node ./src/deploy.ts",
     "dev": "nodemon",
     "build": "tsc -P .",
-    "start": "forever dist\\bot.js"
+    "serve": "forever dist\\bot.js",
+    "start": "node dist\\bot.js"
   },
   "author": "",
   "license": "ISC",
