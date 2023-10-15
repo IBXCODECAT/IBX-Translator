@@ -29,8 +29,10 @@ export async function HandleTranslate(interaction: APIChatInputApplicationComman
 
         console.log("Starting to translate!");
 
+        let translation = "An error occured whilst translating this message!";
+
         try {
-            const trenslation = await translate(content, { from: interaction.locale as Locale | 'auto', to: selectedLanguageCode });
+            translation = await translate(content, { from: interaction.locale as Locale | 'auto', to: selectedLanguageCode });
 
             console.log("Translated!");
         }
@@ -40,7 +42,7 @@ export async function HandleTranslate(interaction: APIChatInputApplicationComman
         }
 
 
-        await EditSlashCommandResponse(interaction, `${trenslation}`);
+        await EditSlashCommandResponse(interaction, `${translation}`);
     }
     catch (err) {
         console.error(err);
