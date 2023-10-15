@@ -29,6 +29,8 @@ export async function HandleTranslate(interaction: APIChatInputApplicationComman
 
         const trenslation = await translate(content, { from: interaction.locale as Locale | 'auto', to: selectedLanguageCode });
 
+        console.log(trenslation);
+        
         await EditSlashCommandResponse(interaction, `${trenslation}`);
     }
     catch (err) {
