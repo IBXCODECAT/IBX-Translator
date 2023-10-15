@@ -1,56 +1,66 @@
 import { APIApplicationCommandInteraction, APIChatInputApplicationCommandInteraction, APIInteractionResponse, APIMessageApplicationCommandInteraction, APIMessageComponentInteraction, APIMessageComponentSelectMenuInteraction, APIMessageInteraction, MessageFlags } from "discord-api-types/v10";
 import { DeferInteractionResponse, EditSlashCommandResponse, InteractionFollowUp, SendFinalSlashCommandResponse } from "../middlewares/discord-interaction";
-import { IBXTranslationObject } from "../interfaces/transObj";
-import { TranslateContent, TranslateInteractionContent } from "../services/translate";
 import { NextApiResponse } from "next";
 import { TRANSLATE_THIS_COMPONENTS } from "../resources/message-components";
 import GetObjectValueThroughChildOfUnknownName from "../services/unkown-json";
+import { translate } from 'free-translate';
+import { Locale } from 'free-translate/dist/types/locales';
 
-export async function HandleTranslate(interaction: APIChatInputApplicationCommandInteraction, res: NextApiResponse<APIInteractionResponse>)
-{
-    const { data: { options }, } = interaction as APIChatInputApplicationCommandInteraction
+export async function HandleTranslate(interaction: APIChatInputApplicationCommandInteraction, res: NextApiResponse<APIInteractionResponse>) {
+    try {
+        const { data: { options }, } = interaction as APIChatInputApplicationCommandInteraction
 
-    switch(options![0].name)
-    {
-        case 'help':
-            console.log('help')
-            await SendFinalSlashCommandResponse(res, MessageFlags.Ephemeral, 'There will be a help message here someday, and that day is not today...');
-            return;
+        console.log(options);
 
-        case 'message':
-            await DeferInteractionResponse(interaction, MessageFlags.SuppressNotifications);
-            const translation_msg: IBXTranslationObject = await TranslateInteractionContent(options!);
-            await EditSlashCommandResponse(interaction, `${translation_msg.translation}`);
-            return;
-        
-        case 'preview':
-            await DeferInteractionResponse(interaction, MessageFlags.Ephemeral);
-            const translation_preview: IBXTranslationObject = await TranslateInteractionContent(options!);
-            await EditSlashCommandResponse(interaction, `${translation_preview.translation}`);
-            return;
+        let ephemeral: boolean = false;
+        const ephemeralOption = options![2];
+
+        if (ephemeralOption !== undefined) {
+            ephemeral = (ephemeralOption as any).value;
+        }
+
+        //Supress notifications in public message or mark as private message
+        const flags = !ephemeral ? MessageFlags.Ephemeral : MessageFlags.SuppressNotifications;
+
+        await DeferInteractionResponse(interaction, flags);
+
+        const content = (options![0] as any).value;
+        const selectedLanguageCode = (options![1] as any).value;
+
+        const trenslation = await translate(content, { from: interaction.locale as Locale | 'auto', to: selectedLanguageCode });
+
+        await EditSlashCommandResponse(interaction, `${trenslation}`);
     }
-}
+    catch (err) {
+        console.error(err);
+    }
 
-export async function HandleTranslateWithDropdown(interaction: APIMessageApplicationCommandInteraction, res: NextApiResponse<APIInteractionResponse>)
-{
-    const sourceMessage: IBXDiscordMessage = JSON.parse(JSON.stringify(interaction));
-    const messageObject = GetObjectValueThroughChildOfUnknownName(interaction.data.resolved.messages);
-
-    const msg = interaction.message?.content!;
-
-    await SendFinalSlashCommandResponse(res, MessageFlags.Ephemeral, messageObject.content, undefined, TRANSLATE_THIS_COMPONENTS);
     return;
 }
 
-export async function HandleTranslateSelection(interaction: APIMessageComponentSelectMenuInteraction, res: NextApiResponse<APIInteractionResponse>)
-{
+export async function HandleTranslateWithDropdown(interaction: APIMessageApplicationCommandInteraction, res: NextApiResponse<APIInteractionResponse>) {
+
+    try {
+        const messageObject = GetObjectValueThroughChildOfUnknownName(interaction.data.resolved.messages);
+
+        const msg = messageObject.content;
+
+        await SendFinalSlashCommandResponse(res, MessageFlags.Ephemeral, msg, undefined, TRANSLATE_THIS_COMPONENTS);
+        return;
+    }
+    catch (err) {
+        console.error(err);
+    }
+}
+
+export async function HandleTranslateSelection(interaction: APIMessageComponentSelectMenuInteraction, res: NextApiResponse<APIInteractionResponse>) {
     const { data: { custom_id, values }, } = interaction
     const messageContent = interaction.message?.content!;
 
     await DeferInteractionResponse(interaction, MessageFlags.Ephemeral);
 
-    const translation_msg: IBXTranslationObject = await TranslateContent(values![0], messageContent);
+    const translation = await translate(messageContent, { from: "auto", to: values[0]! as Locale });
 
-    await EditSlashCommandResponse(interaction, `${translation_msg.translation}`);
+    await EditSlashCommandResponse(interaction, `${translation}`);
     return;
 }

@@ -82,8 +82,7 @@ export const withDiscordInteraction = (next: DiscordInteractionApiHandler) => as
   }
 };
 
-export async function DeferInteractionResponse(interaction: APIInteraction, message_flags: MessageFlags)
-{
+export async function DeferInteractionResponse(interaction: APIInteraction, message_flags: MessageFlags) {
   const fetchOptions = {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
@@ -106,7 +105,7 @@ export async function EditSlashCommandResponse(interaction: APIInteraction, mess
   }
 
   console.log(`Request: ${JSON.stringify(fetchOptions)}`);
-  
+
   const response = await fetch(`https://discord.com/api/v10/webhooks/${DISCORD_APP_ID}/${interaction.token}/messages/@original`, fetchOptions);
 
   console.log(`Response: ${JSON.stringify(response)}\nStatus: ${response.status}`);
@@ -120,9 +119,13 @@ export async function InteractionFollowUp(interaction: APIInteraction, message_f
   }
 
   const response = await fetch(`https://discord.com/api/v10/webhooks/${DISCORD_APP_ID}/${interaction.token}`, fetchOptions);
-  console.log(`Response: ${JSON.stringify(response)}\nStatus: ${response.status}`);
 }
 
 export async function SendFinalSlashCommandResponse(response: NextApiResponse<APIInteractionResponse>, flags: MessageFlags, message_content: string, message_embeds?: any[], message_components?: any[]) {
-  response.status(200).json({ ...INTERACTION_RESPOND_INSTANTLY, data: { tts: false, flags: flags, content: message_content, embeds: message_embeds, components: message_components } });
+  try {
+    response.status(200).json({ ...INTERACTION_RESPOND_INSTANTLY, data: { tts: false, flags: flags, content: message_content, embeds: message_embeds, components: message_components } });
+  }
+  catch (err) {
+    console.error(err);
+  }
 }

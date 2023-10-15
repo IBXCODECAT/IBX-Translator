@@ -42,6 +42,7 @@ const handler = async (
         return await CompleteSlashCommandExecution(res, MessageFlags.SuppressEmbeds, `[Click to Invite IBX Translator🌐 to your server!](https://discord.com/api/oauth2/authorize?client_id=${process.env.CLIENT_ID}&permissions=0&scope=bot%20applications.commands)`);
       case "translate":
         // Execute 'translate' command and call the 'HandleTranslate' function
+        console.log('translate');
         return await HandleTranslate(interaction as APIChatInputApplicationCommandInteraction, res);
       default:
         // Log unknown interactions and return a 404 JSON response
