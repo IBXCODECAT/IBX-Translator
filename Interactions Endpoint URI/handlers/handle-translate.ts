@@ -27,10 +27,19 @@ export async function HandleTranslate(interaction: APIChatInputApplicationComman
         const content = (options![0] as any).value;
         const selectedLanguageCode = (options![1] as any).value;
 
-        const trenslation = await translate(content, { from: interaction.locale as Locale | 'auto', to: selectedLanguageCode });
+        console.log("Starting to translate!");
 
-        console.log(trenslation);
-        
+        try {
+            const trenslation = await translate(content, { from: interaction.locale as Locale | 'auto', to: selectedLanguageCode });
+
+            console.log("Translated!");
+        }
+        catch
+        {
+            console.log("Translation Exception");
+        }
+
+
         await EditSlashCommandResponse(interaction, `${trenslation}`);
     }
     catch (err) {
