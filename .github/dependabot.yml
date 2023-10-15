@@ -6,7 +6,7 @@
 version: 2
 updates:
   - package-ecosystem: "npm" # See documentation for possible values
-    directory: "/Interactions Endpoint URI/" # Location of package manifests
+    directory: "/Bot/" # Location of package manifests
     schedule:
       interval: "weekly"
-    target-branch: "dev"
+    target-branch: "bot-dev"
