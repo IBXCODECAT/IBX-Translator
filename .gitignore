@@ -127,3 +127,6 @@ dist
 .pnp.*
 Interactions Endpoint URI/.env.development
 Interactions Endpoint URI/.env.production
+
+[Hh]ost/
+[Hh]ost/*.env

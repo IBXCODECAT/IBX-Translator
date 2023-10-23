@@ -119,7 +119,7 @@ export default {
 
 			console.log(content!, interaction.locale!, selectedLanguage!);
 
-			const result = await Translate(content!, interaction.locale!, selectedLanguage!);
+			const result = await Translate(content!, selectedLanguage!, interaction.locale!, );
 
 			await interaction.editReply({ content: `${result}` });
 
