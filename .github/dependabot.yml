@@ -9,4 +9,4 @@ updates:
     directory: "/Bot/" # Location of package manifests
     schedule:
       interval: "weekly"
-    target-branch: "bot-dev"
+    target-branch: "main"
