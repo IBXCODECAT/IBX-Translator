@@ -20,4 +20,7 @@ export const strings = {
 
     inviteCommandName: 'cmd.slash.invite.title',
 	inviteCommandDescription: 'cmd.slash.invite.description',
+
+    contributeCommandName: 'cmd.slash.contribute.title',
+    contributeCommandDescription: 'cmd.slash.contribute.description',
 };

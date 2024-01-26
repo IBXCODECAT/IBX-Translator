@@ -15,6 +15,10 @@
             }
         },
         "slash": {
+            "contribute": {
+                "title": "contribute",
+                "description": "Contribute to the IBX Translator🌐 project!"
+            },
             "invite": {
                 "title": "invite",
                 "description": "Adds IBX Translator🌐 to your server!"

@@ -5,6 +5,8 @@ import chalk from 'chalk';
 export const GLOBAL_COMMONJS_FILE_EXTENSION = path.extname(__filename);
 export const ADD_TO_SERVER_URL = 'https://discord.com/api/oauth2/authorize?client_id=1116970853905743894&permissions=2048&scope=bot%20applications.commands';
 
+export const GITHUB_PAGE_URL = process.env.GITHUB_PAGE_URL || "Unable to find GitHub page URL."
+
 console.log(chalk.blueBright(`Loading commonjs using extension \'${GLOBAL_COMMONJS_FILE_EXTENSION}\'...`));
 
 export interface ICooldown {
