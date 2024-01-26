@@ -18,18 +18,18 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "chalk": "^4.1.2",
+    "chalk": "^5.3.0",
     "discord.js": "^14.11.0",
     "dotenv": "^16.3.1",
     "forever": "^4.0.3",
     "free-translate": "^0.6.1",
     "google-translate-api": "^2.3.0",
-    "i18next": "^23.5.1",
-    "i18next-fs-backend": "^2.2.0"
+    "i18next": "^23.7.19",
+    "i18next-fs-backend": "^2.3.1"
   },
   "devDependencies": {
-    "@types/node": "^20.8.3",
-    "eslint": "^8.43.0",
+    "@types/node": "^20.11.6",
+    "eslint": "^8.56.0",
     "nodemon": "^3.0.1",
     "ts-node": "^10.9.1",
     "typescript": "^5.2.2"
