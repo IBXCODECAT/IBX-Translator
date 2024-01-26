@@ -10,3 +10,7 @@ updates:
     schedule:
       interval: "weekly"
     target-branch: "main"
+
+    ignore:
+      # ignore all GitHub linguist patch updates
+      - dependency-name: "chalk"
