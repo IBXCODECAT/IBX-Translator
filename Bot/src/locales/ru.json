@@ -15,6 +15,23 @@
             }
         },
         "slash": {
+            "block": {
+                "title": "block",
+                "description": "Block certain content in all languages",
+                "options":{
+                    "type": {
+                        "name": "type",
+                        "description": "What type of content should be blocked?",
+                        "choices": {
+                            "custom": "Custom",
+                            "profanity": "Profanity",
+                            "sexual": "Sexual",
+                            "slurs": "Slurs",
+                            "spam": "Spam"
+                        }
+                    }
+                }
+            },
             "contribute": {
                 "title": "способствовать",
                 "description": "Внесите свой вклад в проект IBX Translator🌐!"
