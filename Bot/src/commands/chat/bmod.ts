@@ -3,16 +3,13 @@ import { ClientData } from '../../resources/structures';
 
 import i18next from 'i18next';
 
-import { strings } from '../../locales/locales';
+import { LOCALE_CODES as LANG, strings } from '../../locales/locales';
 import Translate from '../../functions/translate';
 import chalk from 'chalk';
 
+import { BMOD_FILTER_CHOICE, COMMAND_DESCRIPTIONS as COMMAND__descriptions, COMMAND_NAMES as COMMAND__names, SUBCOMMANDGROUP_CHANNELS_DESCRIPTION as SUBCOMMANDGROUP_CHANNELS__descriptions, SUBCOMMANDGROUP_CHANNELS_NAME as SUBCOMMANDGROUP_CHANNELS__names, SUBCOMMANDGROUP_CHANNELS_SUBCOMMAND_ADD_DESCRIPTIONS as SUBCOMMANDGROUP_CHANNELS_SUBCOMMAND_ADD__descriptions, SUBCOMMANDGROUP_CHANNELS_SUBCOMMAND_ADD_NAMES as SUBCOMMANDGROUP_CHANNELS_SUBCOMMAND_ADD__names, SUBCOMMANDGROUP_MENTIONABLES_DESCRIPTIONS, SUBCOMMANDGROUP_MENTIONABLES_NAMES, SUBCOMMAND_DISABLE_DESCRIPTION as SUBCOMMAND_DISABLE__descriptions, SUBCOMMAND_DISABLE_NAME as SUBCOMMAND_DISABLE__names, SUBCOMMAND_ENABLE_DESCRIPTION as SUBCOMMAND_ENABLE__descriptions, SUBCOMMAND_ENABLE_NAME as SUBCOMMAND_ENABLE__names, SUBCOMMMANDGROUP_CHANNELS_SUBCOMMAND_REMOVE_NAMES as SUBCOMMMANDGROUP_CHANNELS_SUBCOMMAND_REMOVE__names, SUBCOMMMANDGROUP_CHANNELS_SUBCOMMAND_REMOVE_DESCRIPTIONS as SUBCOMMMANDGROUP_CHANNELS_SUBCOMMAND_REMOVE__descriptions } from '../../resources/bmod';
+
 export const
-    BMOD_CMD_NAME = 'bmod',
-    BMOD_SUBCMD_ENABLE = 'enable',
-    BMOD_SUBCMD_DISABLE = 'disable',
-    BMOD_SUBCMD_GROUP_CHANNELS = 'exempt-channels',
-    BMOD_SUBCMD_GROUP_USERS = 'exempt-users',
     BMOD_SUBCMD_ADD = 'add',
     BMOD_SUBCMD_REMOVE = 'remove',
     BMOD_SUBCMD_LIST = 'list',
@@ -20,67 +17,72 @@ export const
     BMOD_OPTION_MENTIONABLE = 'mentionable',
     BMOD_OPTION_FILTER = 'filter';
 
-const
-    VALUE_ALL = 'all',
-    VALUE_CUSTOM = 'custom',
-    VALUE_PROFANITY = 'profanity',
-    VALUE_SEXUAL_CONTENT = 'sexual-content',
-    VALUE_SLURS = 'slurs',
-    VALUE_SPAM = 'spam';
-
-
 export default {
-    commandName: BMOD_CMD_NAME,
+    commandName: COMMAND__names['en-US'],
     cooldown: 10,
     guilds: null,
     data: new SlashCommandBuilder()
+        .setName(COMMAND__names['en-US'])
+        .setNameLocalizations(COMMAND__names)
+        .setDescription(COMMAND__descriptions['en-US'])
+        .setDescriptionLocalizations(COMMAND__descriptions)
         .setDefaultMemberPermissions(PermissionFlagsBits.ManageGuild)
         .setDMPermission(false)
         .setNSFW(false)
-        .setName(BMOD_CMD_NAME)
-        .setDescription('Manage bilingual moderation filters in this server')
 
-        //==========ENABLE AND DISABLE FILTERS==========//
-
+        //Enable Filter
         .addSubcommand((subcommand: SlashCommandSubcommandBuilder) => subcommand
-            .setName(BMOD_SUBCMD_ENABLE)
-            .setDescription('Enables a bilingual moderation filter in this server')
+            .setName(SUBCOMMAND_ENABLE__names['en-US'])
+            .setNameLocalizations(SUBCOMMAND_ENABLE__names)
+            .setDescription(SUBCOMMAND_ENABLE__descriptions['en-US'])
+            .setDescriptionLocalizations(SUBCOMMAND_ENABLE__descriptions)
             .addStringOption((option: SlashCommandStringOption) => option
                 .setName(BMOD_OPTION_FILTER)
                 .setDescription('Specify a filter to enable')
                 .addChoices(
-                    { name: 'Custom Filter', value: VALUE_CUSTOM },
-                    { name: 'Profanity Filter', value: VALUE_PROFANITY },
-                    { name: 'Sexual Content Filter', value: VALUE_SEXUAL_CONTENT },
-                    { name: 'Slurs Filter', value: VALUE_SLURS },
-                    { name: 'Spam Filter', value: VALUE_SPAM }
+                    BMOD_FILTER_CHOICE.ALL,
+                    BMOD_FILTER_CHOICE.CUSTOM,
+                    BMOD_FILTER_CHOICE.PROFANITY,
+                    BMOD_FILTER_CHOICE.SEXUAL_CONTENT,
+                    BMOD_FILTER_CHOICE.SLURS,
+                    BMOD_FILTER_CHOICE.SPAM
                 )
             )
         )
+
+        //Disable filter
         .addSubcommand((subcommand: SlashCommandSubcommandBuilder) => subcommand
-            .setName(BMOD_SUBCMD_DISABLE)
-            .setDescription('Disables a bilingual moderation filter in this server')
+            .setName(SUBCOMMAND_DISABLE__names['en-US'])
+            .setNameLocalizations(SUBCOMMAND_DISABLE__names)
+            .setDescription(SUBCOMMAND_DISABLE__descriptions['en-US'])
+            .setDescriptionLocalizations(SUBCOMMAND_DISABLE__descriptions)
             .addStringOption((option: SlashCommandStringOption) => option
                 .setName(BMOD_OPTION_FILTER)
                 .setDescription('Specify a filter to disable')
                 .addChoices(
-                    { name: 'Custom Filter', value: VALUE_CUSTOM },
-                    { name: 'Profanity Filter', value: VALUE_PROFANITY },
-                    { name: 'Sexual Content Filter', value: VALUE_SEXUAL_CONTENT },
-                    { name: 'Slurs Filter', value: VALUE_SLURS },
-                    { name: 'Spam Filter', value: VALUE_SPAM }
+                    BMOD_FILTER_CHOICE.ALL,
+                    BMOD_FILTER_CHOICE.CUSTOM,
+                    BMOD_FILTER_CHOICE.PROFANITY,
+                    BMOD_FILTER_CHOICE.SEXUAL_CONTENT,
+                    BMOD_FILTER_CHOICE.SLURS,
+                    BMOD_FILTER_CHOICE.SPAM
                 )
             )
         )
 
+
         //==========FILTER CHANNEL EXEMPTIONS==========//
 
         .addSubcommandGroup((group: SlashCommandSubcommandGroupBuilder) => group
-            .setName(BMOD_SUBCMD_GROUP_CHANNELS)
-            .setDescription('Manage channels to be exempt from bilingual moderation filters')
+            .setName(SUBCOMMANDGROUP_CHANNELS__names['en-US'])
+            .setNameLocalizations(SUBCOMMANDGROUP_CHANNELS__names)
+            .setDescription(SUBCOMMANDGROUP_CHANNELS__descriptions['en-US'])
+            .setDescriptionLocalizations(SUBCOMMANDGROUP_CHANNELS__descriptions)
             .addSubcommand((subcommand: SlashCommandSubcommandBuilder) => subcommand
-                .setName(BMOD_SUBCMD_ADD)
-                .setDescription('Add a channel exemption from any or all bilingual moderation filters')
+                .setName(SUBCOMMANDGROUP_CHANNELS_SUBCOMMAND_ADD__names['en-US'])
+                .setNameLocalizations(SUBCOMMANDGROUP_CHANNELS_SUBCOMMAND_ADD__names)
+                .setDescription(SUBCOMMANDGROUP_CHANNELS_SUBCOMMAND_ADD__descriptions['en-US'])
+                .setDescriptionLocalizations(SUBCOMMANDGROUP_CHANNELS_SUBCOMMAND_ADD__descriptions)
                 .addChannelOption((option: SlashCommandChannelOption) => option
                     .setName(BMOD_OPTION_CHANNEL)
                     .setDescription('Specify a channel to exempt from any or all bilingual moderation filters')
@@ -91,18 +93,20 @@ export default {
                     .setDescription('Apply exemptions to a designated filter or all filters if unspecified')
                     .setRequired(false)
                     .addChoices(
-                        { name: 'All Filters', value: VALUE_ALL },
-                        { name: 'Custom Filter', value: VALUE_CUSTOM },
-                        { name: 'Profanity Filter', value: VALUE_PROFANITY },
-                        { name: 'Sexual Content Filter', value: VALUE_SEXUAL_CONTENT },
-                        { name: 'Slurs Filter', value: VALUE_SLURS },
-                        { name: 'Spam Filter', value: VALUE_SPAM }
+                        BMOD_FILTER_CHOICE.ALL,
+                        BMOD_FILTER_CHOICE.CUSTOM,
+                        BMOD_FILTER_CHOICE.PROFANITY,
+                        BMOD_FILTER_CHOICE.SEXUAL_CONTENT,
+                        BMOD_FILTER_CHOICE.SLURS,
+                        BMOD_FILTER_CHOICE.SPAM
                     )
                 )
             )
             .addSubcommand((subcommand: SlashCommandSubcommandBuilder) => subcommand
-                .setName(BMOD_SUBCMD_REMOVE)
-                .setDescription('Remove a channel exemption from any or all bilingual moderation filters')
+                .setName(SUBCOMMMANDGROUP_CHANNELS_SUBCOMMAND_REMOVE__names['en-US'])
+                .setNameLocalizations(SUBCOMMMANDGROUP_CHANNELS_SUBCOMMAND_REMOVE__names)
+                .setDescription(SUBCOMMMANDGROUP_CHANNELS_SUBCOMMAND_REMOVE__descriptions['en-US'])
+                .setDescriptionLocalizations(SUBCOMMMANDGROUP_CHANNELS_SUBCOMMAND_REMOVE__descriptions)
                 .addChannelOption((option: SlashCommandChannelOption) => option
                     .setName(BMOD_OPTION_CHANNEL)
                     .setDescription('Specify a channel to remove from the list of exemptions')
@@ -113,12 +117,12 @@ export default {
                     .setDescription('Remove exemptions from a designated filter or all filters if unspecified')
                     .setRequired(false)
                     .addChoices(
-                        { name: 'All Filters', value: VALUE_ALL },
-                        { name: 'Custom Filter', value: VALUE_CUSTOM },
-                        { name: 'Profanity Filter', value: VALUE_PROFANITY },
-                        { name: 'Sexual Content Filter', value: VALUE_SEXUAL_CONTENT },
-                        { name: 'Slurs Filter', value: VALUE_SLURS },
-                        { name: 'Spam Filter', value: VALUE_SPAM }
+                        BMOD_FILTER_CHOICE.ALL,
+                        BMOD_FILTER_CHOICE.CUSTOM,
+                        BMOD_FILTER_CHOICE.PROFANITY,
+                        BMOD_FILTER_CHOICE.SEXUAL_CONTENT,
+                        BMOD_FILTER_CHOICE.SLURS,
+                        BMOD_FILTER_CHOICE.SPAM
                     )
                 )
             )
@@ -130,12 +134,12 @@ export default {
                     .setDescription('List exemptions from a designated filter or all filters if unspecified')
                     .setRequired(false)
                     .addChoices(
-                        { name: 'All Filters', value: VALUE_ALL },
-                        { name: 'Custom Filter', value: VALUE_CUSTOM },
-                        { name: 'Profanity Filter', value: VALUE_PROFANITY },
-                        { name: 'Sexual Content Filter', value: VALUE_SEXUAL_CONTENT },
-                        { name: 'Slurs Filter', value: VALUE_SLURS },
-                        { name: 'Spam Filter', value: VALUE_SPAM }
+                        BMOD_FILTER_CHOICE.ALL,
+                        BMOD_FILTER_CHOICE.CUSTOM,
+                        BMOD_FILTER_CHOICE.PROFANITY,
+                        BMOD_FILTER_CHOICE.SEXUAL_CONTENT,
+                        BMOD_FILTER_CHOICE.SLURS,
+                        BMOD_FILTER_CHOICE.SPAM
                     )
                 )
             )
@@ -145,10 +149,12 @@ export default {
         //==========FILTER USER/ROLE EXEMPTIONS==========
 
         .addSubcommandGroup((group: SlashCommandSubcommandGroupBuilder) => group
-            .setName(BMOD_SUBCMD_GROUP_USERS)
-            .setDescription('Manage users and roles to be exempt from bilingual moderation filters')
+            .setName(SUBCOMMANDGROUP_MENTIONABLES_NAMES['en-US'])
+            .setNameLocalizations(SUBCOMMANDGROUP_MENTIONABLES_NAMES)
+            .setDescription(SUBCOMMANDGROUP_MENTIONABLES_DESCRIPTIONS['en-US'])
+            .setDescriptionLocalizations(SUBCOMMANDGROUP_MENTIONABLES_DESCRIPTIONS)
             .addSubcommand((subcommand: SlashCommandSubcommandBuilder) => subcommand
-                .setName(BMOD_SUBCMD_ADD)
+                .setName(sU)
                 .setDescription('Add a user or role exemption to any or all bilingual moderation filters')
                 .addMentionableOption((option: SlashCommandMentionableOption) => option
                     .setName(BMOD_OPTION_MENTIONABLE)
@@ -160,12 +166,12 @@ export default {
                     .setDescription('Apply exemptions to a designated filter or all filters if unspecified')
                     .setRequired(false)
                     .addChoices(
-                        { name: 'All Filters', value: VALUE_ALL },
-                        { name: 'Custom Filter', value: VALUE_CUSTOM },
-                        { name: 'Profanity Filter', value: VALUE_PROFANITY },
-                        { name: 'Sexual Content Filter', value: VALUE_SEXUAL_CONTENT },
-                        { name: 'Slurs Filter', value: VALUE_SLURS },
-                        { name: 'Spam Filter', value: VALUE_SPAM }
+                        BMOD_FILTER_CHOICE.ALL,
+                        BMOD_FILTER_CHOICE.CUSTOM,
+                        BMOD_FILTER_CHOICE.PROFANITY,
+                        BMOD_FILTER_CHOICE.SEXUAL_CONTENT,
+                        BMOD_FILTER_CHOICE.SLURS,
+                        BMOD_FILTER_CHOICE.SPAM
                     )
                 )
             )
@@ -182,12 +188,12 @@ export default {
                     .setDescription('Remove exemptions from a designated filter or all filters if unspecified')
                     .setRequired(false)
                     .addChoices(
-                        { name: 'All Filters', value: VALUE_ALL },
-                        { name: 'Custom Filter', value: VALUE_CUSTOM },
-                        { name: 'Profanity Filter', value: VALUE_PROFANITY },
-                        { name: 'Sexual Content Filter', value: VALUE_SEXUAL_CONTENT },
-                        { name: 'Slurs Filter', value: VALUE_SLURS },
-                        { name: 'Spam Filter', value: VALUE_SPAM }
+                        BMOD_FILTER_CHOICE.ALL,
+                        BMOD_FILTER_CHOICE.CUSTOM,
+                        BMOD_FILTER_CHOICE.PROFANITY,
+                        BMOD_FILTER_CHOICE.SEXUAL_CONTENT,
+                        BMOD_FILTER_CHOICE.SLURS,
+                        BMOD_FILTER_CHOICE.SPAM
                     )
                 )
             )
@@ -199,12 +205,12 @@ export default {
                     .setDescription('List exemptions from a designated filter or all filters if unspecified')
                     .setRequired(false)
                     .addChoices(
-                        { name: 'All Filters', value: VALUE_ALL },
-                        { name: 'Custom Filter', value: VALUE_CUSTOM },
-                        { name: 'Profanity Filter', value: VALUE_PROFANITY },
-                        { name: 'Sexual Content Filter', value: VALUE_SEXUAL_CONTENT },
-                        { name: 'Slurs Filter', value: VALUE_SLURS },
-                        { name: 'Spam Filter', value: VALUE_SPAM }
+                        BMOD_FILTER_CHOICE.ALL,
+                        BMOD_FILTER_CHOICE.CUSTOM,
+                        BMOD_FILTER_CHOICE.PROFANITY,
+                        BMOD_FILTER_CHOICE.SEXUAL_CONTENT,
+                        BMOD_FILTER_CHOICE.SLURS,
+                        BMOD_FILTER_CHOICE.SPAM
                     )
                 )
             )
@@ -223,18 +229,16 @@ export default {
             const subcmd_group = interaction.options.getSubcommandGroup();
             const subcmd = interaction.options.getSubcommand();
 
-            if(subcmd === BMOD_SUBCMD_ENABLE) 
-            {
+            if (subcmd === BMOD_SUBCMD_ENABLE) {
                 const FILTER = interaction.options.getString(BMOD_OPTION_FILTER);
 
                 /*
                 if(FILTER === VALUE_CUSTOM) {
-
+            
                 }
                 */
             }
-            else
-            {
+            else {
 
             }
 

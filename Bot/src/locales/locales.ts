@@ -1,3 +1,11 @@
+export const LOCALE_CODES = {
+    ENGLISH_GB: 'en-GB',
+    ENGLISH_US: 'en-US',
+    GERMAN: 'de',
+    RUSSIAN: 'ru',
+    SPANISH: 'es-ES',
+}
+
 export const strings = {
     german: 'lang.german',
     english_gb: 'lang.english_gb',
@@ -5,17 +13,39 @@ export const strings = {
     spanish: 'lang.spanish',
     russian: 'lang.russian',
     
-    //BLOCK Command
-    blockCommandName: 'cmd.slash.block.title',
-    blockCommandDescription: 'cmd.slash.block.description',
-    blockTypeFieldName: 'cmd.slash.block.options.type.name',
-    blockTypeFieldDescription: 'cmd.slash.block.options.type.description',
-    blockTypeFieldChoiceCustom: 'cmd.slash.block.options.type.choices.custom',
-    blockTypeFieldChoiceProfanity: 'cmd.slash.block.options.type.choices.profanity',
-    blockTypeFieldChoiceSexual: 'cmd.slash.block.options.type.choices.sexual',
-    blockTypeFieldChoiceSlurs: 'cmd.slash.block.options.type.choices.slurs',
-    blockTypeFieldChoiceSpam: 'cmd.slash.block.options.type.choices.spam',
+
+    //BMOD Command
+    bmodCommandName: 'cmd.bmod.name',
+    bmodCommandDescription: 'cmd.bmod.description',
     
+    //Subcommands
+    bmodEnableSubcommandName: 'cmd.bmod.sub.enable.name',
+    bmodEnableSubcommandDescription: 'cmd.bmod.sub.enable.description',
+    bmodDisableSubcommandName: 'cmd.bmod.sub.disable.name',
+    bmodDisableSubcommandDescription: 'cmd.bmod.sub.disable.description',
+    
+    //Subcommand Groups
+    bmodChannelsSubcommandGroupName: 'cmd.bmod.subgruop.channels.name',
+    bmodChannelsSubcommandGroupDescription: 'cmd.bmod.subgroup.channels.description',
+    bmodMentionableSubcommandGroupName: 'cmd.bmod.subgroup.mentionable.name',
+    bmodMentionableSubcommandGroupDescription: 'cmd.bmod.subgroup.mentionable.description',
+    
+    //Subcommand Group <Channels> Subcommands
+    bmodChannelsSubcommandGroupAddSubcommandName: 'cmd.bmod.subgroup.channels.sub.add.name',
+    bmodChannelsSubcommandGroupAddSubcommandDescription: 'cmd.bmod.subgroup.channels.sub.add.description',
+    bmodChannelsSubcommandGroupRemoveSubcommandName: 'cmd.bmod.subgroup.channels.sub.remove.name',
+    bmodChannelsSubcommandGroupRemoveSubcommandDescription: 'cmd.bmod.subgroup.channels.sub.remove.description',
+    bmodChannelsSubcommandGroupListSubcommandName: 'cmd.bmod.subgroup.channels.sub.list.name',
+    bmodChannelsSubcommandGroupListSubcommandDescription: 'cmd.bmod.subgroup.channels.sub.list.description',
+
+    //Subcommand Group <Mentionable> Subcommands
+    bmodMentionableSubcommandGroupAddSubcommandName: 'cmd.bmod.subgroup.mentionable.sub.add.name',
+    bmodMentionableSubcommandGroupAddSubcommandDescription: 'cmd.bmod.subgroup.mentionable.sub.add.description',
+    bmodMentionableSubcommandGroupRemoveSubcommandName: 'cmd.bmod.subgroup.mentionable.sub.remove.name',
+    bmodMentionableSubcommandGroupRemoveSubcommandDescription: 'cmd.bmod.subgroup.mentionable.sub.remove.description',
+    bmodMentionableSubcommandGroupListSubcommandName: 'cmd.bmod.subgroup.mentionable.sub.list.name',
+    bmodMentionableSubcommandGroupListSubcommandDescription: 'cmd.bmod.subgroup.mentionable.sub.list.description',
+
 
     contributeCommandName: 'cmd.slash.contribute.title',
     contributeCommandDescription: 'cmd.slash.contribute.description',
