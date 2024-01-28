@@ -20,7 +20,7 @@
                 "description": "Block certain content in all languages",
                 "options":{
                     "type": {
-                        "name": "type",
+                        "name": "typ",
                         "description": "What type of content should be blocked?",
                         "choices": {
                             "custom": "Custom",
