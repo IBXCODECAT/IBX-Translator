@@ -1,60 +1,111 @@
 {
     "lang": {
-        "german": "Немецкий",
-        "english_gb": "Английский (Великобритания)",
-        "english_us": "Английский Соединенные Штаты)",
-        "spanish": "испанский",
-        "russian": "Русский"
+        "german": "German",
+        "english_gb": "English (Great Britain)",
+        "english_us": "English (United States)",
+        "spanish": "Spanish",
+        "russian": "Russian"
     },
     "cmd": {
         "context": {
             "translate-this": {
-                "title": "Переведи Это!",
-                "prompt": "Пожалуйста, выберите язык ниже",
-                "placeholder": "Выберите Язык"
+                "title": "Translate This!",
+                "prompt": "Please choose a language below.",
+                "placeholder": "Select a Language"
             }
         },
         "slash": {
-            "block": {
-                "title": "block",
-                "description": "Block certain content in all languages",
-                "options":{
-                    "type": {
-                        "name": "type",
-                        "description": "What type of content should be blocked?",
-                        "choices": {
-                            "custom": "Custom",
-                            "profanity": "Profanity",
-                            "sexual": "Sexual",
-                            "slurs": "Slurs",
-                            "spam": "Spam"
+            "bmod": {
+                "name": "bmod",
+                "description": "Configure Bilingual Moderation with IBX Translator🌐!",
+                "filter": {
+                    "name": "filter",
+                    "description": "Selct a filter type"
+                },
+                "options": {
+                    "channel": {
+                        "name": "channel",
+                        "description": "Select a channel"
+                    },
+                    "mentionable": {
+                        "name": "mentionable",
+                        "description": "Select a user or role"
+                    }
+                },
+                "sub": {
+                    "enable": {
+                        "name": "enable",
+                        "description": "Enable a Bilingual Moderation filter"
+                    },
+                    "disable": {
+                        "name": "disable",
+                        "description": "Disable a Bilingual Moderation filter"
+                    }
+                },
+                "subgroup": {
+                    "name": "",
+                    "description": "",
+                    "channels": {
+                        "name": "exempt-channels",
+                        "description": "Add or remove exempt channels",
+                        "sub": {
+                            "add": {
+                                "name": "add",
+                                "description": "Add a channel to the exempt list"
+                            },
+                            "remove": {
+                                "name": "remove",
+                                "description": "Remove a channel from the exempt list"
+                            },
+                            "list": {
+                                "name": "list",
+                                "description": "List all exempt channels"
+                            }
+                        }
+                    },
+                    "mentionables" : {
+                        "name": "exempt-members",
+                        "description": "Add or remove exempt users and roles",
+                        "sub": {
+                            "add": {
+                                "name": "add",
+                                "description": "Add a user or role to the exempt list"
+                            },
+                            "remove": {
+                                "name": "remove",
+                                "description": "Remove a user or role from the exempt list"
+                            },
+                            "list": {
+                                "name": "list",
+                                "description": "List all exempt users and roles"
+                            }
                         }
                     }
                 }
             },
             "contribute": {
-                "title": "способствовать",
-                "description": "Внесите свой вклад в проект IBX Translator🌐!"
+                "title": "contribute",
+                "description": "Contribute to the IBX Translator🌐 project!"
             },
             "invite": {
-                "title": "приглашать",
-                "description": "Добавляет IBX Translator🌐 на ваш сервер!"
+                "title": "invite",
+                "description": "Adds IBX Translator🌐 to your server!"
             },
             "translate": {
-                "title": "перевести",
-                "description": "Перевести текст на другой язык",
+                "title": "translate",
+                "description": "Translate text to another language",
                 "options": {
                     "content": {
-                        "name": "содержание",
-                        "description": "Текст для перевода"
+                        "name": "content",
+                        "description": "The text to translate"
                     },
                     "language": {
-                        "name": "язык",
-                        "description": "Язык, на который будет осуществляться перевод"
+                        "name": "language",
+                        "description": "The language to translate to"
                     },
                     "public": {
-                        "name": "общественный",
-                        "description": "Следует ли опубликовать этот перевод как сообщение в чате"
+                        "name": "public",
+                        "description": "Wether or not I should post this translation as a message"
                     }
                 }
             }

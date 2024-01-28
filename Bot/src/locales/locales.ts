@@ -15,46 +15,46 @@ export const strings = {
     
 
     //BMOD Command
-    bmodCommandName: 'cmd.bmod.name',
-    bmodCommandDescription: 'cmd.bmod.description',
+    bmodCommandName: 'cmd.slash.bmod.name',
+    bmodCommandDescription: 'cmd.slash.bmod.description',
     
     //Subcommands
-    bmodEnableSubcommandName: 'cmd.bmod.sub.enable.name',
-    bmodEnableSubcommandDescription: 'cmd.bmod.sub.enable.description',
-    bmodDisableSubcommandName: 'cmd.bmod.sub.disable.name',
-    bmodDisableSubcommandDescription: 'cmd.bmod.sub.disable.description',
+    bmodEnableSubcommandName: 'cmd.slash.bmod.sub.enable.name',
+    bmodEnableSubcommandDescription: 'cmd.slash.bmod.sub.enable.description',
+    bmodDisableSubcommandName: 'cmd.slash.bmod.sub.disable.name',
+    bmodDisableSubcommandDescription: 'cmd.slash.bmod.sub.disable.description',
     
     //Subcommand Groups
-    bmodChannelsSubcommandGroupName: 'cmd.bmod.subgruop.channels.name',
-    bmodChannelsSubcommandGroupDescription: 'cmd.bmod.subgroup.channels.description',
-    bmodMentionableSubcommandGroupName: 'cmd.bmod.subgroup.mentionable.name',
-    bmodMentionableSubcommandGroupDescription: 'cmd.bmod.subgroup.mentionable.description',
+    bmodChannelsSubcommandGroupName: 'cmd.slash.bmod.subgroup.channels.name',
+    bmodChannelsSubcommandGroupDescription: 'cmd.slash.bmod.subgroup.channels.description',
+    bmodMentionableSubcommandGroupName: 'cmd.slash.bmod.subgroup.mentionables.name',
+    bmodMentionableSubcommandGroupDescription: 'cmd.slash.bmod.subgroup.mentionables.description',
     
     //Subcommand Group <Channels> Subcommands
-    bmodChannelsSubcommandGroupAddSubcommandName: 'cmd.bmod.subgroup.channels.sub.add.name',
-    bmodChannelsSubcommandGroupAddSubcommandDescription: 'cmd.bmod.subgroup.channels.sub.add.description',
-    bmodChannelsSubcommandGroupRemoveSubcommandName: 'cmd.bmod.subgroup.channels.sub.remove.name',
-    bmodChannelsSubcommandGroupRemoveSubcommandDescription: 'cmd.bmod.subgroup.channels.sub.remove.description',
-    bmodChannelsSubcommandGroupListSubcommandName: 'cmd.bmod.subgroup.channels.sub.list.name',
-    bmodChannelsSubcommandGroupListSubcommandDescription: 'cmd.bmod.subgroup.channels.sub.list.description',
+    bmodChannelsSubcommandGroupAddSubcommandName: 'cmd.slash.bmod.subgroup.channels.sub.add.name',
+    bmodChannelsSubcommandGroupAddSubcommandDescription: 'cmd.slash.bmod.subgroup.channels.sub.add.description',
+    bmodChannelsSubcommandGroupRemoveSubcommandName: 'cmd.slash.bmod.subgroup.channels.sub.remove.name',
+    bmodChannelsSubcommandGroupRemoveSubcommandDescription: 'cmd.slash.bmod.subgroup.channels.sub.remove.description',
+    bmodChannelsSubcommandGroupListSubcommandName: 'cmd.slash.bmod.subgroup.channels.sub.list.name',
+    bmodChannelsSubcommandGroupListSubcommandDescription: 'cmd.slash.bmod.subgroup.channels.sub.list.description',
 
     //Subcommand Group <Mentionable> Subcommands
-    bmodMentionableSubcommandGroupAddSubcommandName: 'cmd.bmod.subgroup.mentionable.sub.add.name',
-    bmodMentionableSubcommandGroupAddSubcommandDescription: 'cmd.bmod.subgroup.mentionable.sub.add.description',
-    bmodMentionableSubcommandGroupRemoveSubcommandName: 'cmd.bmod.subgroup.mentionable.sub.remove.name',
-    bmodMentionableSubcommandGroupRemoveSubcommandDescription: 'cmd.bmod.subgroup.mentionable.sub.remove.description',
-    bmodMentionableSubcommandGroupListSubcommandName: 'cmd.bmod.subgroup.mentionable.sub.list.name',
-    bmodMentionableSubcommandGroupListSubcommandDescription: 'cmd.bmod.subgroup.mentionable.sub.list.description',
+    bmodMentionableSubcommandGroupAddSubcommandName: 'cmd.slash.bmod.subgroup.mentionables.sub.add.name',
+    bmodMentionableSubcommandGroupAddSubcommandDescription: 'cmd.slash.bmod.subgroup.mentionables.sub.add.description',
+    bmodMentionableSubcommandGroupRemoveSubcommandName: 'cmd.slash.bmod.subgroup.mentionables.sub.remove.name',
+    bmodMentionableSubcommandGroupRemoveSubcommandDescription: 'cmd.slash.bmod.subgroup.mentionables.sub.remove.description',
+    bmodMentionableSubcommandGroupListSubcommandName: 'cmd.slash.bmod.subgroup.mentionables.sub.list.name',
+    bmodMentionableSubcommandGroupListSubcommandDescription: 'cmd.slash.bmod.subgroup.mentionables.sub.list.description',
 
     //Filter Types
-    bmodFilterOptionName: 'cmd.bmod.filter.name',
-    bmodFilterOptionDescription: 'cmd.bmod.filter.description',
+    bmodFilterOptionName: 'cmd.slash.bmod.filter.name',
+    bmodFilterOptionDescription: 'cmd.slash.bmod.filter.description',
 
     //Options
-    bmodChannelOptionName: 'cmd.bmod.option.channel.name',
-    bmodChannelOptionDescription: 'cmd.bmod.option.channel.description',
-    bmodMentionableOptionName: 'cmd.bmod.option.mentionable.name',
-    bmodMentionableOptionDescription: 'cmd.bmod.option.mentionable.description',
+    bmodChannelOptionName: 'cmd.slash.bmod.options.channel.name',
+    bmodChannelOptionDescription: 'cmd.slash.bmod.options.channel.description',
+    bmodMentionableOptionName: 'cmd.slash.bmod.options.mentionable.name',
+    bmodMentionableOptionDescription: 'cmd.slash.bmod.options.mentionable.description',
 
     contributeCommandName: 'cmd.slash.contribute.title',
     contributeCommandDescription: 'cmd.slash.contribute.description',

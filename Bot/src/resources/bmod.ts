@@ -251,13 +251,11 @@ export const OPTION_CHANNEL_DESCRIPTIONS =
 
 export const OPTION_MENTIONABLE_NAMES =
 {
-
     'de': i18next.t(STRINGS.bmodMentionableOptionName, { lng: LOCALE_CODES.GERMAN }),
     'en-GB': i18next.t(STRINGS.bmodMentionableOptionName, { lng: LOCALE_CODES.ENGLISH_GB }),
     'en-US': i18next.t(STRINGS.bmodMentionableOptionName, { lng: LOCALE_CODES.ENGLISH_US }),
     'ru': i18next.t(STRINGS.bmodMentionableOptionName, { lng: LOCALE_CODES.RUSSIAN }),
     'es-ES': i18next.t(STRINGS.bmodMentionableOptionName, { lng: LOCALE_CODES.SPANISH }),
-
 }
 
 export const OPTION_MENTIONABLE_DESCRIPTIONS =

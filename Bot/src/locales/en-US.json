@@ -10,24 +10,75 @@
         "context": {
             "translate-this": {
                 "title": "Translate This!",
-                "prompt": "Please select a language below.",
+                "prompt": "Please choose a language below.",
                 "placeholder": "Select a Language"
             }
         },
         "slash": {
-            "block": {
-                "title": "block",
-                "description": "Block certain content in all languages",
-                "options":{
-                    "type": {
-                        "name": "type",
-                        "description": "What type of content should be blocked?",
-                        "choices": {
-                            "custom": "Custom",
-                            "profanity": "Profanity",
-                            "sexual": "Sexual",
-                            "slurs": "Slurs",
-                            "spam": "Spam"
+            "bmod": {
+                "name": "bmod",
+                "description": "Configure Bilingual Moderation with IBX Translator🌐!",
+                "filter": {
+                    "name": "filter",
+                    "description": "Selct a filter type"
+                },
+                "options": {
+                    "channel": {
+                        "name": "channel",
+                        "description": "Select a channel"
+                    },
+                    "mentionable": {
+                        "name": "mentionable",
+                        "description": "Select a user or role"
+                    }
+                },
+                "sub": {
+                    "enable": {
+                        "name": "enable",
+                        "description": "Enable a Bilingual Moderation filter"
+                    },
+                    "disable": {
+                        "name": "disable",
+                        "description": "Disable a Bilingual Moderation filter"
+                    }
+                },
+                "subgroup": {
+                    "name": "",
+                    "description": "",
+                    "channels": {
+                        "name": "exempt-channels",
+                        "description": "Add or remove exempt channels",
+                        "sub": {
+                            "add": {
+                                "name": "add",
+                                "description": "Add a channel to the exempt list"
+                            },
+                            "remove": {
+                                "name": "remove",
+                                "description": "Remove a channel from the exempt list"
+                            },
+                            "list": {
+                                "name": "list",
+                                "description": "List all exempt channels"
+                            }
+                        }
+                    },
+                    "mentionables" : {
+                        "name": "exempt-members",
+                        "description": "Add or remove exempt users and roles",
+                        "sub": {
+                            "add": {
+                                "name": "add",
+                                "description": "Add a user or role to the exempt list"
+                            },
+                            "remove": {
+                                "name": "remove",
+                                "description": "Remove a user or role from the exempt list"
+                            },
+                            "list": {
+                                "name": "list",
+                                "description": "List all exempt users and roles"
+                            }
                         }
                     }
                 }
