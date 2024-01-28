@@ -46,6 +46,15 @@ export const strings = {
     bmodMentionableSubcommandGroupListSubcommandName: 'cmd.bmod.subgroup.mentionable.sub.list.name',
     bmodMentionableSubcommandGroupListSubcommandDescription: 'cmd.bmod.subgroup.mentionable.sub.list.description',
 
+    //Filter Types
+    bmodFilterOptionName: 'cmd.bmod.filter.name',
+    bmodFilterOptionDescription: 'cmd.bmod.filter.description',
+
+    //Options
+    bmodChannelOptionName: 'cmd.bmod.option.channel.name',
+    bmodChannelOptionDescription: 'cmd.bmod.option.channel.description',
+    bmodMentionableOptionName: 'cmd.bmod.option.mentionable.name',
+    bmodMentionableOptionDescription: 'cmd.bmod.option.mentionable.description',
 
     contributeCommandName: 'cmd.slash.contribute.title',
     contributeCommandDescription: 'cmd.slash.contribute.description',

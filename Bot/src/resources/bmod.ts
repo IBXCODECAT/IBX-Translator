@@ -23,7 +23,7 @@ export const COMMAND_DESCRIPTIONS =
 
 //==========SUBCOMMANDS==========//
 
-export const SUBCOMMAND_ENABLE_NAME =
+export const SUBCOMMAND_ENABLE_NAMES =
 {
     'de': i18next.t(STRINGS.bmodEnableSubcommandName, { lng: LOCALE_CODES.GERMAN }),
     'en-GB': i18next.t(STRINGS.bmodEnableSubcommandName, { lng: LOCALE_CODES.ENGLISH_GB }),
@@ -32,7 +32,7 @@ export const SUBCOMMAND_ENABLE_NAME =
     'es-ES': i18next.t(STRINGS.bmodEnableSubcommandName, { lng: LOCALE_CODES.SPANISH }),
 }
 
-export const SUBCOMMAND_ENABLE_DESCRIPTION =
+export const SUBCOMMAND_ENABLE_DESCRIPTIONS =
 {
     'de': i18next.t(STRINGS.bmodEnableSubcommandDescription, { lng: LOCALE_CODES.GERMAN }),
     'en-GB': i18next.t(STRINGS.bmodEnableSubcommandDescription, { lng: LOCALE_CODES.ENGLISH_GB }),
@@ -41,7 +41,7 @@ export const SUBCOMMAND_ENABLE_DESCRIPTION =
     'es-ES': i18next.t(STRINGS.bmodEnableSubcommandDescription, { lng: LOCALE_CODES.SPANISH }),
 }
 
-export const SUBCOMMAND_DISABLE_NAME =
+export const SUBCOMMAND_DISABLE_NAMES =
 {
     'de': i18next.t(STRINGS.bmodDisableSubcommandName, { lng: LOCALE_CODES.GERMAN }),
     'en-GB': i18next.t(STRINGS.bmodDisableSubcommandName, { lng: LOCALE_CODES.ENGLISH_GB }),
@@ -50,7 +50,7 @@ export const SUBCOMMAND_DISABLE_NAME =
     'es-ES': i18next.t(STRINGS.bmodDisableSubcommandName, { lng: LOCALE_CODES.SPANISH }),
 }
 
-export const SUBCOMMAND_DISABLE_DESCRIPTION =
+export const SUBCOMMAND_DISABLE_DESCRIPTIONS =
 {
     'de': i18next.t(STRINGS.bmodDisableSubcommandDescription, { lng: LOCALE_CODES.GERMAN }),
     'en-GB': i18next.t(STRINGS.bmodDisableSubcommandDescription, { lng: LOCALE_CODES.ENGLISH_GB }),
@@ -61,7 +61,7 @@ export const SUBCOMMAND_DISABLE_DESCRIPTION =
 
 //==========SUBCOMMAND GROUPS==========//
 
-export const SUBCOMMANDGROUP_CHANNELS_NAME =
+export const SUBCOMMANDGROUP_CHANNELS_NAMES =
 {
     'de': i18next.t(STRINGS.bmodChannelsSubcommandGroupName, { lng: LOCALE_CODES.GERMAN }),
     'en-GB': i18next.t(STRINGS.bmodChannelsSubcommandGroupName, { lng: LOCALE_CODES.ENGLISH_GB }),
@@ -70,7 +70,7 @@ export const SUBCOMMANDGROUP_CHANNELS_NAME =
     'es-ES': i18next.t(STRINGS.bmodChannelsSubcommandGroupName, { lng: LOCALE_CODES.SPANISH }),
 }
 
-export const SUBCOMMANDGROUP_CHANNELS_DESCRIPTION =
+export const SUBCOMMANDGROUP_CHANNELS_DESCRIPTIONS =
 {
     'de': i18next.t(STRINGS.bmodChannelsSubcommandGroupDescription, { lng: LOCALE_CODES.GERMAN }),
     'en-GB': i18next.t(STRINGS.bmodChannelsSubcommandGroupDescription, { lng: LOCALE_CODES.ENGLISH_GB }),
@@ -98,6 +98,7 @@ export const SUBCOMMANDGROUP_MENTIONABLES_DESCRIPTIONS =
 }
 
 //==========SUBCOMMAND GROUP <CHANNELS> SUBCOMMANDS==========//
+
 export const SUBCOMMANDGROUP_CHANNELS_SUBCOMMAND_ADD_NAMES =
 {
     'de': i18next.t(STRINGS.bmodChannelsSubcommandGroupAddSubcommandName, { lng: LOCALE_CODES.GERMAN }),
@@ -134,6 +135,139 @@ export const SUBCOMMMANDGROUP_CHANNELS_SUBCOMMAND_REMOVE_DESCRIPTIONS =
     'es-ES': i18next.t(STRINGS.bmodChannelsSubcommandGroupRemoveSubcommandDescription, { lng: LOCALE_CODES.SPANISH }),
 }
 
+export const SUBCOMMANDGROUP_CHANNELS_SUBCOMMAND_LIST_NAMES =
+{
+    'de': i18next.t(STRINGS.bmodChannelsSubcommandGroupListSubcommandName, { lng: LOCALE_CODES.GERMAN }),
+    'en-GB': i18next.t(STRINGS.bmodChannelsSubcommandGroupListSubcommandName, { lng: LOCALE_CODES.ENGLISH_GB }),
+    'en-US': i18next.t(STRINGS.bmodChannelsSubcommandGroupListSubcommandName, { lng: LOCALE_CODES.ENGLISH_US }),
+    'ru': i18next.t(STRINGS.bmodChannelsSubcommandGroupListSubcommandName, { lng: LOCALE_CODES.RUSSIAN }),
+    'es-ES': i18next.t(STRINGS.bmodChannelsSubcommandGroupListSubcommandName, { lng: LOCALE_CODES.SPANISH }),
+}
+
+export const SUBCOMMANDGROUP_CHANNELS_SUBCOMMAND_LIST_DESCRIPTIONS =
+{
+    'de': i18next.t(STRINGS.bmodChannelsSubcommandGroupListSubcommandDescription, { lng: LOCALE_CODES.GERMAN }),
+    'en-GB': i18next.t(STRINGS.bmodChannelsSubcommandGroupListSubcommandDescription, { lng: LOCALE_CODES.ENGLISH_GB }),
+    'en-US': i18next.t(STRINGS.bmodChannelsSubcommandGroupListSubcommandDescription, { lng: LOCALE_CODES.ENGLISH_US }),
+    'ru': i18next.t(STRINGS.bmodChannelsSubcommandGroupListSubcommandDescription, { lng: LOCALE_CODES.RUSSIAN }),
+    'es-ES': i18next.t(STRINGS.bmodChannelsSubcommandGroupListSubcommandDescription, { lng: LOCALE_CODES.SPANISH }),
+}
+
+//==========SUBCOMMAND GROUP <MENTIONABLES> SUBCOMMANDS==========//
+
+export const SUBCOMMANDGROUP_MENTIONABLES_SUBCOMMAND_ADD_NAMES =
+{
+    'de': i18next.t(STRINGS.bmodMentionableSubcommandGroupAddSubcommandName, { lng: LOCALE_CODES.GERMAN }),
+    'en-GB': i18next.t(STRINGS.bmodMentionableSubcommandGroupAddSubcommandName, { lng: LOCALE_CODES.ENGLISH_GB }),
+    'en-US': i18next.t(STRINGS.bmodMentionableSubcommandGroupAddSubcommandName, { lng: LOCALE_CODES.ENGLISH_US }),
+    'ru': i18next.t(STRINGS.bmodMentionableSubcommandGroupAddSubcommandName, { lng: LOCALE_CODES.RUSSIAN }),
+    'es-ES': i18next.t(STRINGS.bmodMentionableSubcommandGroupAddSubcommandName, { lng: LOCALE_CODES.SPANISH }),
+}
+
+export const SUBCOMMANDGROUP_MENTIONABLES_SUBCOMMAND_ADD_DESCRIPTIONS =
+{
+    'de': i18next.t(STRINGS.bmodMentionableSubcommandGroupAddSubcommandDescription, { lng: LOCALE_CODES.GERMAN }),
+    'en-GB': i18next.t(STRINGS.bmodMentionableSubcommandGroupAddSubcommandDescription, { lng: LOCALE_CODES.ENGLISH_GB }),
+    'en-US': i18next.t(STRINGS.bmodMentionableSubcommandGroupAddSubcommandDescription, { lng: LOCALE_CODES.ENGLISH_US }),
+    'ru': i18next.t(STRINGS.bmodMentionableSubcommandGroupAddSubcommandDescription, { lng: LOCALE_CODES.RUSSIAN }),
+    'es-ES': i18next.t(STRINGS.bmodMentionableSubcommandGroupAddSubcommandDescription, { lng: LOCALE_CODES.SPANISH }),
+}
+
+export const SUBCOMMMANDGROUP_MENTIONABLES_SUBCOMMAND_REMOVE_NAMES =
+{
+    'de': i18next.t(STRINGS.bmodMentionableSubcommandGroupRemoveSubcommandName, { lng: LOCALE_CODES.GERMAN }),
+    'en-GB': i18next.t(STRINGS.bmodMentionableSubcommandGroupRemoveSubcommandName, { lng: LOCALE_CODES.ENGLISH_GB }),
+    'en-US': i18next.t(STRINGS.bmodMentionableSubcommandGroupRemoveSubcommandName, { lng: LOCALE_CODES.ENGLISH_US }),
+    'ru': i18next.t(STRINGS.bmodMentionableSubcommandGroupRemoveSubcommandName, { lng: LOCALE_CODES.RUSSIAN }),
+    'es-ES': i18next.t(STRINGS.bmodMentionableSubcommandGroupRemoveSubcommandName, { lng: LOCALE_CODES.SPANISH }),
+}
+
+export const SUBCOMMMANDGROUP_MENTIONABLES_SUBCOMMAND_REMOVE_DESCRIPTIONS =
+{
+    'de': i18next.t(STRINGS.bmodMentionableSubcommandGroupRemoveSubcommandDescription, { lng: LOCALE_CODES.GERMAN }),
+    'en-GB': i18next.t(STRINGS.bmodMentionableSubcommandGroupRemoveSubcommandDescription, { lng: LOCALE_CODES.ENGLISH_GB }),
+    'en-US': i18next.t(STRINGS.bmodMentionableSubcommandGroupRemoveSubcommandDescription, { lng: LOCALE_CODES.ENGLISH_US }),
+    'ru': i18next.t(STRINGS.bmodMentionableSubcommandGroupRemoveSubcommandDescription, { lng: LOCALE_CODES.RUSSIAN }),
+    'es-ES': i18next.t(STRINGS.bmodMentionableSubcommandGroupRemoveSubcommandDescription, { lng: LOCALE_CODES.SPANISH }),
+}
+
+export const SUBCOMMANDGROUP_MENTIONABLES_SUBCOMMAND_LIST_NAMES =
+{
+    'de': i18next.t(STRINGS.bmodMentionableSubcommandGroupListSubcommandName, { lng: LOCALE_CODES.GERMAN }),
+    'en-GB': i18next.t(STRINGS.bmodMentionableSubcommandGroupListSubcommandName, { lng: LOCALE_CODES.ENGLISH_GB }),
+    'en-US': i18next.t(STRINGS.bmodMentionableSubcommandGroupListSubcommandName, { lng: LOCALE_CODES.ENGLISH_US }),
+    'ru': i18next.t(STRINGS.bmodMentionableSubcommandGroupListSubcommandName, { lng: LOCALE_CODES.RUSSIAN }),
+    'es-ES': i18next.t(STRINGS.bmodMentionableSubcommandGroupListSubcommandName, { lng: LOCALE_CODES.SPANISH }),
+}
+
+export const SUBCOMMANDGROUP_MENTIONABLES_SUBCOMMAND_LIST_DESCRIPTIONS =
+{
+    'de': i18next.t(STRINGS.bmodMentionableSubcommandGroupListSubcommandDescription, { lng: LOCALE_CODES.GERMAN }),
+    'en-GB': i18next.t(STRINGS.bmodMentionableSubcommandGroupListSubcommandDescription, { lng: LOCALE_CODES.ENGLISH_GB }),
+    'en-US': i18next.t(STRINGS.bmodMentionableSubcommandGroupListSubcommandDescription, { lng: LOCALE_CODES.ENGLISH_US }),
+    'ru': i18next.t(STRINGS.bmodMentionableSubcommandGroupListSubcommandDescription, { lng: LOCALE_CODES.RUSSIAN }),
+    'es-ES': i18next.t(STRINGS.bmodMentionableSubcommandGroupListSubcommandDescription, { lng: LOCALE_CODES.SPANISH }),
+}
+
+//==========FILTER TYPES==========//
+
+export const FILTER_NAMES =
+{
+    'de': i18next.t(STRINGS.bmodFilterOptionName, { lng: LOCALE_CODES.GERMAN }),
+    'en-GB': i18next.t(STRINGS.bmodFilterOptionName, { lng: LOCALE_CODES.ENGLISH_GB }),
+    'en-US': i18next.t(STRINGS.bmodFilterOptionName, { lng: LOCALE_CODES.ENGLISH_US }),
+    'ru': i18next.t(STRINGS.bmodFilterOptionName, { lng: LOCALE_CODES.RUSSIAN }),
+    'es-ES': i18next.t(STRINGS.bmodFilterOptionName, { lng: LOCALE_CODES.SPANISH }),
+}
+
+export const FILTER_DESCRIPTIONS =
+{
+    'de': i18next.t(STRINGS.bmodFilterOptionDescription, { lng: LOCALE_CODES.GERMAN }),
+    'en-GB': i18next.t(STRINGS.bmodFilterOptionDescription, { lng: LOCALE_CODES.ENGLISH_GB }),
+    'en-US': i18next.t(STRINGS.bmodFilterOptionDescription, { lng: LOCALE_CODES.ENGLISH_US }),
+    'ru': i18next.t(STRINGS.bmodFilterOptionDescription, { lng: LOCALE_CODES.RUSSIAN }),
+    'es-ES': i18next.t(STRINGS.bmodFilterOptionDescription, { lng: LOCALE_CODES.SPANISH }),
+}
+
+//==========OPTIONS==========//
+
+export const OPTION_CHANNEL_NAMES =
+{
+    'de': i18next.t(STRINGS.bmodChannelOptionName, { lng: LOCALE_CODES.GERMAN }),
+    'en-GB': i18next.t(STRINGS.bmodChannelOptionName, { lng: LOCALE_CODES.ENGLISH_GB }),
+    'en-US': i18next.t(STRINGS.bmodChannelOptionName, { lng: LOCALE_CODES.ENGLISH_US }),
+    'ru': i18next.t(STRINGS.bmodChannelOptionName, { lng: LOCALE_CODES.RUSSIAN }),
+    'es-ES': i18next.t(STRINGS.bmodChannelOptionName, { lng: LOCALE_CODES.SPANISH }),
+}
+
+export const OPTION_CHANNEL_DESCRIPTIONS =
+{
+    'de': i18next.t(STRINGS.bmodChannelOptionDescription, { lng: LOCALE_CODES.GERMAN }),
+    'en-GB': i18next.t(STRINGS.bmodChannelOptionDescription, { lng: LOCALE_CODES.ENGLISH_GB }),
+    'en-US': i18next.t(STRINGS.bmodChannelOptionDescription, { lng: LOCALE_CODES.ENGLISH_US }),
+    'ru': i18next.t(STRINGS.bmodChannelOptionDescription, { lng: LOCALE_CODES.RUSSIAN }),
+    'es-ES': i18next.t(STRINGS.bmodChannelOptionDescription, { lng: LOCALE_CODES.SPANISH }),
+}
+
+export const OPTION_MENTIONABLE_NAMES =
+{
+
+    'de': i18next.t(STRINGS.bmodMentionableOptionName, { lng: LOCALE_CODES.GERMAN }),
+    'en-GB': i18next.t(STRINGS.bmodMentionableOptionName, { lng: LOCALE_CODES.ENGLISH_GB }),
+    'en-US': i18next.t(STRINGS.bmodMentionableOptionName, { lng: LOCALE_CODES.ENGLISH_US }),
+    'ru': i18next.t(STRINGS.bmodMentionableOptionName, { lng: LOCALE_CODES.RUSSIAN }),
+    'es-ES': i18next.t(STRINGS.bmodMentionableOptionName, { lng: LOCALE_CODES.SPANISH }),
+
+}
+
+export const OPTION_MENTIONABLE_DESCRIPTIONS =
+{
+    'de': i18next.t(STRINGS.bmodMentionableOptionDescription, { lng: LOCALE_CODES.GERMAN }),
+    'en-GB': i18next.t(STRINGS.bmodMentionableOptionDescription, { lng: LOCALE_CODES.ENGLISH_GB }),
+    'en-US': i18next.t(STRINGS.bmodMentionableOptionDescription, { lng: LOCALE_CODES.ENGLISH_US }),
+    'ru': i18next.t(STRINGS.bmodMentionableOptionDescription, { lng: LOCALE_CODES.RUSSIAN }),
+    'es-ES': i18next.t(STRINGS.bmodMentionableOptionDescription, { lng: LOCALE_CODES.SPANISH }),
+}
 
 
 const BMOD_FILTER_NAMES = {
@@ -199,7 +333,7 @@ const BMOD_FILTER_NAME_LOCALIZATIONS = {
     }
 }
 
-export const BMOD_FILTER_CHOICE = {
+export const FILTER_CHOICE = {
     ALL: {
         name: BMOD_FILTER_NAMES.ALL,
         value: BMOD_FILTER_VALUES.ALL,
