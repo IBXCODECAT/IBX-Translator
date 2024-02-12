@@ -20,7 +20,7 @@
   "dependencies": {
     "chalk": "^4",
     "discord.js": "^14.14.1",
-    "dotenv": "^16.4.1",
+    "dotenv": "^16.4.3",
     "forever": "^4.0.3",
     "free-translate": "^0.6.1",
     "google-translate-api": "^2.3.0",
